@@ -31,9 +31,7 @@
     </head>  
     <body>  
      <center>  
-        
-       
-       
+             
      <b>Klienci</b>  
        
       
@@ -58,11 +56,11 @@
          <td>${klient.ulica}</td>
          <td>${klient.numer}</td>
          <td>${klient.miasto}</td>  
-         <td><a href="edit?id=${klient.id_klienta}">Edytuj</a></td>  
-         <td><a href="delete?id=${klient.id_klienta}">Usun</a></td>  
+         <td><a href="editKlient?id=${klient.id_klienta}">Edytuj</a></td>  
+         <td><a href="deleteKlient?id=${klient.id_klienta}">Usun</a></td>  
         </tr>  
        </c:forEach>  
-       <tr><td colspan="10"><a href="register">Dodaj nowego klienta</a></td></tr>  
+       <tr><td colspan="10"><a href="registerKlient">Dodaj nowego klienta</a></td></tr>  
       </table>  
       
      </center>  

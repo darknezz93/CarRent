@@ -22,7 +22,7 @@ public class KlientPageController {
 	@Autowired 
 	KlientService klientService;
 	
-	@RequestMapping("/register")
+	@RequestMapping("/registerKlient")
 	public ModelAndView registerKlient(@ModelAttribute Klient klient){
 		
 		List<String> cityList = new ArrayList<String>();
@@ -33,10 +33,10 @@ public class KlientPageController {
 		
 		Map<String, List> map = new HashMap<String, List>();
 		map.put("cityList", cityList);
-		return new ModelAndView("register","map",map);
+		return new ModelAndView("registerKlient","map",map);
 	}
 	
-	@RequestMapping("/insert")
+	@RequestMapping("/insertKlient")
 	public String insertData(@ModelAttribute Klient klient){
 		if(klient != null)
 			klientService.insertData(klient);
@@ -49,23 +49,23 @@ public class KlientPageController {
 		return new ModelAndView("klientList", "klientList", klientList);
 	}
 	
-	@RequestMapping("/edit")
+	@RequestMapping("/editKlient")
 	public ModelAndView editKlient(@RequestParam String id, @ModelAttribute Klient klient){
 		
 		klient = klientService.getKlient(id);
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("klient", klient);
-		return new ModelAndView("edit", "map", map);
+		return new ModelAndView("editKlient", "map", map);
 	}
 	
-	@RequestMapping("/update")
+	@RequestMapping("/updateKlient")
 	public String updateKlient(@ModelAttribute Klient klient){
 		klientService.updateData(klient);
 		return "redirect:/getKlient";
 	}
 	
-	@RequestMapping("/delete")
+	@RequestMapping("/deleteKlient")
 	public String deleteKlient(@RequestParam String id){
 		System.out.println("id = " + id);
 		klientService.deleteData(id);

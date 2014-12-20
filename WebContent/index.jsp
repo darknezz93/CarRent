@@ -1,1 +1,1 @@
-<%response.sendRedirect("register");%>  
+<%response.sendRedirect("registerKlient");%>  
