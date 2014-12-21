@@ -30,7 +30,9 @@
       
      <!-- declare beans -->  
      <bean id="klientDao" class="com.wypozyczalnia.dao.KlientDaoImpl" />  
-     <bean id="klientService" class="com.wypozyczalnia.services.KlientServiceImpl" />  
+     <bean id="klientService" class="com.wypozyczalnia.services.KlientServiceImpl" />
+     <bean id="samochodDao" class="com.wypozyczalnia.dao.SamochodDaoImpl" />  
+     <bean id="samochodService" class="com.wypozyczalnia.services.SamochodServiceImpl" />  
       
      <!-- declare datasource bean -->  
      <bean id="dataSource"  

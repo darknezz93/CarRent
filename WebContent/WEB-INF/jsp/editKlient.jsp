@@ -240,7 +240,7 @@ iframe{
     <center>
     <header>
     <div id="menu"><a href = "http://localhost:8080/CarRent/getKlient">Klienci</a></div>
-    <div id="menu"><a href = "http://localhost:8080/CarRent/registerSamochod">Samochody</a></div>
+    <div id="menu"><a href = "http://localhost:8080/CarRent/getSamochod">Samochody</a></div>
     <div id="menu"><a href = "http://localhost:8080/CarRent/registerKlient">Lokalizacje</a></div>
     <div id="menu"><a href = "http://localhost:8080/CarRent/registerKlient">Pracownicy</a></div>
     <div id="menu"><a href = "http://localhost:8080/CarRent/registerKlient">Wypożyczenia</a></div>
