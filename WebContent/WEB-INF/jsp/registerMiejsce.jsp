@@ -226,7 +226,7 @@ iframe{
 	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>
     
       
-    <title>Dodawanie klienta</title>  
+    <title>Dodawanie lokalizacji</title>  
     </head> 
     
     <center>
@@ -244,42 +244,48 @@ iframe{
     <body>  
      
      <center>
-     <b>Dodaj nowego klienta</b>   
+     <b>Dodaj nową lokalizację</b>   
          
       <div>  
-       <form:form method="post" action="insertKlient" modelAttribute="klient">  
+       <form:form method="post" action="insertMiejsce" modelAttribute="miejsce">  
         <table>  
-         <tr>  
-          <td>Imie :</td>  
-          <td><form:input path="imie" /></td>  
-         </tr>  
-         <tr>  
-          <td>Nazwisko :</td>  
-          <td><form:input path="nazwisko" /></td>  
-         </tr>  
-         <tr>  
-          <td>Telefon :</td>  
-          <td><form:input path="telefon" /></td>  
-         </tr>   
          <tr>  
           <td>Ulica :</td>  
           <td><form:input path="ulica" /></td>  
-         </tr>
+         </tr>  
          <tr>  
           <td>Numer :</td>  
           <td><form:input path="numer" /></td>  
          </tr>
-         <tr>  
-          <td>Miasto :</td>  
-          <td><form:input path="miasto" /></td>  
-         </tr>
+         
+      
+      <tr>  
+  
+      <td>Miasto :</td>  
+      <td><spring:bind path="miasto">  
+        <select name="miasto">  
+         <c:forEach items='${map.cityList}' var='cityName'>  
+          <c:choose>  
+           <c:when test="${cityName eq map.miejsce.miasto}">  
+            <option value="${cityName}" selected="true">${cityName}</option>  
+           </c:when>  
+           <c:otherwise>  
+            <option value="${cityName}">${cityName}</option>  
+           </c:otherwise>  
+          </c:choose>  
+         </c:forEach>  
+        </select>  
+       </spring:bind></td>  
+     </tr>  
+
+    
          <tr> 
           <td> </td>  
           <td><input type="submit" value="Zapisz" /></td>  
          </tr>  
          <tr>  
             
-          <td colspan="10"><a href="getKlient">Zobacz obecna liste klientow</a></td>  
+          <td colspan="10"><a href="getMiejsce">Zobacz obecna liste lokalizacji</a></td>  
          </tr>  
         </table>  
        </form:form>  

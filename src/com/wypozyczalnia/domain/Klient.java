@@ -65,9 +65,6 @@ public class Klient {
 	public void setMiasto(String miasto){
 		this.miasto = miasto;
 	}
-	
-	
-	
-	
+
 
 }

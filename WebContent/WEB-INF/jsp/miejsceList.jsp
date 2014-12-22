@@ -1,13 +1,33 @@
+     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
     <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>  
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
     <%@page language="Java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
     <html>  
-    <head>
+    <head>  
+    <title>Lista klientów</title>  
+    <style>  
+    body {  
+     font-size: 20px;  
+     color: teal;  
+     font-family: Calibri;  
+    }  
+      
+    td {  
+     font-size: 15px;  
+     color: black;  
+     width: 100px;  
+     height: 22px;  
+     text-align: center;  
+    }  
+    .heading {  
+     font-size: 18px;  
+     color: white;  
+     font: bold;  
+     background-color: orange;  
+     border: thick;  
+    }
     
-    
-    <style>
-    
-    header{
+        header{
 	text-align:center;
 	background-color:rgba(252,252,232, 0.8);    #19A7FF
 	height: 30px;
@@ -212,21 +232,17 @@ iframe{
 
 #resume_content{
 	font-size: 24px;
-}
-    
+}  
     </style>
     
-    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  
-    <link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
+
+	<link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
     <link rel = "stylesheet" type="text/css" href= href="<%=request.getContextPath()%>/src/main/css/style.css"/>
     
     <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script>
-	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>
-    
-      
-    <title>Dodawanie klienta</title>  
+	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>  
     </head> 
     
     <center>
@@ -239,56 +255,36 @@ iframe{
     <div id="menu"><a href = "http://localhost:8080/CarRent/registerKlient">Utwórz wypożyczenie</a></div>
 	</header>
 	</center>
-
-       
-    <body>  
+    
      
-     <center>
-     <b>Dodaj nowego klienta</b>   
-         
-      <div>  
-       <form:form method="post" action="insertKlient" modelAttribute="klient">  
-        <table>  
-         <tr>  
-          <td>Imie :</td>  
-          <td><form:input path="imie" /></td>  
-         </tr>  
-         <tr>  
-          <td>Nazwisko :</td>  
-          <td><form:input path="nazwisko" /></td>  
-         </tr>  
-         <tr>  
-          <td>Telefon :</td>  
-          <td><form:input path="telefon" /></td>  
-         </tr>   
-         <tr>  
-          <td>Ulica :</td>  
-          <td><form:input path="ulica" /></td>  
-         </tr>
-         <tr>  
-          <td>Numer :</td>  
-          <td><form:input path="numer" /></td>  
-         </tr>
-         <tr>  
-          <td>Miasto :</td>  
-          <td><form:input path="miasto" /></td>  
-         </tr>
-         <tr> 
-          <td> </td>  
-          <td><input type="submit" value="Zapisz" /></td>  
-         </tr>  
-         <tr>  
-            
-          <td colspan="10"><a href="getKlient">Zobacz obecna liste klientow</a></td>  
-         </tr>  
-        </table>  
-       </form:form>  
-      </div>
-      </center>
-   
+    <body>  
+     <center>  
+             
+     <b>Lokalizacje</b>  
+       
       
-    
-            
-    
+      <table border="1">  
+       <tr>  
+        <td class="heading">Miejsce Id</td>  
+        <td class="heading">Ulica</td>  
+        <td class="heading">Numer</td>  
+        <td class="heading">Miasto</td>  
+        <td class="heading">Edytuj</td>  
+        <td class="heading">Usun</td>    
+       </tr>  
+       <c:forEach var="miejsce" items="${miejsceList}">  
+        <tr>  
+         <td>${miejsce.id_miejsca}</td>  
+         <td>${miejsce.ulica}</td>  
+         <td>${miejsce.numer}</td>  
+         <td>${miejsce.miasto}</td>  
+         <td><a href="editMiejsce?id=${miejsce.id_miejsca}">Edytuj</a></td>  
+         <td><a href="deleteMiejsce?id=${miejsce.id_miejsca}">Usun</a></td>  
+        </tr>  
+       </c:forEach>  
+       <tr><td colspan="10"><a href="registerMiejsce">Dodaj nową lokalizację</a></td></tr>  
+      </table>  
+      
+     </center>  
     </body>  
     </html>  
