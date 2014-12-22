@@ -288,7 +288,7 @@ iframe{
          <td><a href="deleteSamochod?id=${samochod.id_samochodu}">Usun</a></td>  
         </tr>  
        </c:forEach>  
-       <tr><td colspan="10"><a href="registerSamochod">Dodaj nowego samochód</a></td></tr>  
+       <tr><td colspan="10"><a href="registerSamochod">Dodaj nowy samochód</a></td></tr>  
       </table>  
       
      </center>  
