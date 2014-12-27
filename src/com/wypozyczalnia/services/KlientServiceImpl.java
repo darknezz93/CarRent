@@ -21,6 +21,7 @@ public class KlientServiceImpl implements KlientService {
 		return klientdao.getKlientList();
 	}
 	
+	
 	@Override
 	public void deleteData(String id){
 		klientdao.deleteData(id);

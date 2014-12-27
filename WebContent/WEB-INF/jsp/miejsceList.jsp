@@ -251,8 +251,8 @@ iframe{
     <div id="menu"><a href = "http://localhost:8080/CarRent/getSamochod">Samochody</a></div>
     <div id="menu"><a href = "http://localhost:8080/CarRent/getMiejsce">Lokalizacje</a></div>
     <div id="menu"><a href = "http://localhost:8080/CarRent/getPracownik">Pracownicy</a></div>
-    <div id="menu"><a href = "http://localhost:8080/CarRent/registerKlient">Wypożyczenia</a></div>
-    <div id="menu"><a href = "http://localhost:8080/CarRent/registerKlient">Utwórz wypożyczenie</a></div>
+    <div id="menu"><a href = "http://localhost:8080/CarRent/getWypozyczenie">Wypożyczenia</a></div>
+    <div id="menu"><a href = "http://localhost:8080/CarRent/registerWypozyczenie">Utwórz wypożyczenie</a></div>
 	</header>
 	</center>
     

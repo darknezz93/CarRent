@@ -2,11 +2,15 @@ package com.wypozyczalnia.dao;
 
 import java.util.ArrayList;  
 import java.util.List;  
+
 import javax.sql.DataSource;  
+
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.jdbc.core.JdbcTemplate;  
+
 import com.wypozyczalnia.domain.Klient;  
 import com.wypozyczalnia.jdbc.KlientRowMapper; 
+
 
 public class KlientDaoImpl implements KlientDao {
 	
@@ -35,6 +39,7 @@ public class KlientDaoImpl implements KlientDao {
 		return klientList;
 	}
 	
+	
 	@Override
 	public void deleteData(String id){
 		String sql = "DELETE FROM Klient WHERE id_klienta = " + id;
@@ -45,7 +50,7 @@ public class KlientDaoImpl implements KlientDao {
 	@Override
 	public void updateData(Klient klient){
 		String sql = "UPDATE Klient set imie = ?, nazwisko = ?, telefon = ?, "
-				+ "ulica = ?, numer = ?, miasto = ?, WHERE id_klienta=?";
+				+ "ulica = ?, numer = ?, miasto = ? WHERE id_klienta=?";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		

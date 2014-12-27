@@ -5,7 +5,10 @@ import java.util.HashMap;
 import java.util.List;  
 import java.util.Map;  
 
+import javax.activation.DataSource;
+
 import org.springframework.beans.factory.annotation.Autowired;  
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;  
 import org.springframework.web.bind.annotation.ModelAttribute;  
 import org.springframework.web.bind.annotation.RequestMapping;  
@@ -13,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;  
 
 import com.wypozyczalnia.domain.Klient;
+import com.wypozyczalnia.jdbc.KlientRowMapper;
 import com.wypozyczalnia.services.KlientService;  
 
 
@@ -46,7 +50,9 @@ public class KlientPageController {
 	@RequestMapping("/getKlient")
 	public ModelAndView getKlientList(){
 		List<Klient> klientList = klientService.getKlientList();
+		System.out.println(klientList);
 		return new ModelAndView("klientList", "klientList", klientList);
+	
 	}
 	
 	@RequestMapping("/editKlient")

@@ -1,20 +1,41 @@
     <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>  
-    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
-    <%@page language="Java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>  
+    <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
+    <%@page language="Java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>  
     <html>  
-    <head>
+    <head>  
+    <title>Edycja</title>  
+    <style>  
+    body {  
+     font-size: 20px;  
+     color: teal;  
+     font-family: Calibri;  
+    }  
+      
+    td {  
+     font-size: 15px;  
+     color: black;  
+     width: 100px;  
+     height: 22px;  
+     text-align: center;  
+    }  
+      
+    .heading {  
+     font-size: 18px;  
+     color: white;  
+     font: bold;  
+     background-color: green;  
+     border: thick;  
+    }
     
-    
-    <style>
-    
-    header{
+        header{
 	text-align:center;
 	background-color:rgba(252,252,232, 0.8);    #19A7FF
 	height: 30px;
 	padding:20px;
 	margin: 0 auto;
 	max-width:100%;
-	font-family: Michroma;
+	font-family: Orbitron;
 	margin-top:-8px;
 	margin-left:-8px;
 	margin-right: -8px;
@@ -32,7 +53,7 @@ body{
 	background-color:##19A7FF;
     transition: background-color 0.4s ease;
     display:inline; 
-    font-size:19px;
+    font-size:23px;
     padding:20px;
     margin-top:10px;
 
@@ -73,7 +94,7 @@ a{
 }
 
 fieldset{
-	font-family: Michroma;
+	font-family: Orbitron;
 	font-size: 24px;
 	width: 500px;
 	height: 50%;
@@ -113,7 +134,7 @@ textarea{
 #send_button{
 	margin-left:65%;
 	height: 30px;
-	font-family: Michroma;
+	font-family: Orbitron;
 }
 
 
@@ -212,22 +233,9 @@ iframe{
 
 #resume_content{
 	font-size: 24px;
-}
-    
-    </style>
-    
-    
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  
-    <link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
-    <link rel = "stylesheet" type="text/css" href= href="<%=request.getContextPath()%>/src/main/css/style.css"/>
-    
-    <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script>
-	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>
-    
-      
-    <title>Dodawanie klienta</title>  
-    </head> 
+}  
+    </style>  
+    </head>
     
     <center>
     <header>
@@ -239,56 +247,63 @@ iframe{
     <div id="menu"><a href = "http://localhost:8080/CarRent/registerWypozyczenie">Utwórz wypożyczenie</a></div>
 	</header>
 	</center>
-
-       
+      
     <body>  
-     
-     <center>
-     <b>Dodaj nowego klienta</b>   
-         
+     <center>  
+        
+       
+       
+     <b>Edytowanie wypożyczenia</b>  
+       
+      
       <div>  
-       <form:form method="post" action="insertKlient" modelAttribute="klient">  
+       <form:form method="post" action="updateWypozyczenie" modelAttribute="wypozyczenie">  
         <table>  
          <tr>  
           <td>Imie :</td>  
-          <td><form:input path="imie" /></td>  
+          <td><form:input path="imie"  
+            value="${map.wypozyczenie.data_wypozyczenia}" />  
+          </td>  
          </tr>  
          <tr>  
           <td>Nazwisko :</td>  
-          <td><form:input path="nazwisko" /></td>  
+          <td><form:input path="nazwisko" value="${map.klient.nazwisko}" />  
+          </td>  
          </tr>  
          <tr>  
           <td>Telefon :</td>  
-          <td><form:input path="telefon" /></td>  
-         </tr>   
+          <td><form:input path="telefon" value="${map.klient.telefon}" />  
+          </td>  
+         </tr>  
+         <tr>
          <tr>  
-          <td>Ulica :</td>  
-          <td><form:input path="ulica" /></td>  
-         </tr>
+          <td>Ulica:</td>  
+          <td><form:input path="ulica" value="${map.klient.ulica}" />  
+          </td>  
+         </tr>  
+         <tr>
          <tr>  
           <td>Numer :</td>  
-          <td><form:input path="numer" /></td>  
-         </tr>
+          <td><form:input path="numer" value="${map.klient.numer}" />  
+          </td>  
+         </tr>  
+         <tr>
          <tr>  
           <td>Miasto :</td>  
-          <td><form:input path="miasto" /></td>  
-         </tr>
-         <tr> 
-          <td> </td>  
-          <td><input type="submit" value="Zapisz" /></td>  
+          <td><form:input path="miasto" value="${map.klient.miasto}" />  
+          </td>  
          </tr>  
+ 
          <tr>  
-            
-          <td colspan="10"><a href="getKlient">Zobacz obecna liste klientow</a></td>  
+          <td> </td>  
+          <td><input type="submit" value="Save" />  
+          </td>  
          </tr>  
         </table>  
-       </form:form>  
-      </div>
-      </center>
-   
+        <form:hidden path="id_klienta" value="${map.klient.id_klienta}" />  
       
-    
-            
-    
+       </form:form>  
+      </div>  
+     </center>  
     </body>  
     </html>  
