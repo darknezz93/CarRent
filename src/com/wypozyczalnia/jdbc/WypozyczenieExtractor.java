@@ -18,8 +18,12 @@ public class WypozyczenieExtractor  implements ResultSetExtractor<Wypozyczenie> 
 		wypozyczenie.setMiejsce_id_miejsca(resultSet.getInt(4));
 		wypozyczenie.setPracownik_id_pracownika(resultSet.getInt(5));
 		wypozyczenie.setKlient_id_klienta(resultSet.getInt(6));
-		wypozyczenie.setImie_klienta(resultSet.getString(7));
-
+		wypozyczenie.setNazwisko_klienta(resultSet.getString(7));
+		wypozyczenie.setNazwa_samochodu(resultSet.getString(8));
+		wypozyczenie.setNazwisko_pracownika(resultSet.getString(9));
+		wypozyczenie.setImie_klienta(resultSet.getString(10));
+		wypozyczenie.setImie_pracownika(resultSet.getString(11));
+		
 		return wypozyczenie;
 		
 	}

@@ -8,12 +8,12 @@ public class Wypozyczenie {
 	private int Miejsce_id_miejsca;
 	private int Pracownik_id_pracownika;
 	private int Klient_id_klienta;
-	private String imie_klienta;
-	private String nazwisko_klienta;
-	private String nazwa_samochodu;
-	private String imie_pracownika;
-	private String nazwisko_pracownika;
-	private String miejsce_ulica;
+	public String nazwisko_klienta;
+	public String nazwa_samochodu;
+	public String nazwisko_pracownika;
+	public String miejsce_ulica;
+	public String imie_klienta;
+	public String imie_pracownika;
 	
 	
 	public int getId_wypozyczenia(){
@@ -64,13 +64,6 @@ public class Wypozyczenie {
 		this.Klient_id_klienta = Klient_id_klienta;
 	}
 	
-	public String getImie_klienta(){
-		return imie_klienta;
-	}
-	
-	public void setImie_klienta(String imie_klienta){
-		this.imie_klienta = imie_klienta;
-	}
 	
 	public String getNazwisko_klienta(){
 		return nazwisko_klienta;
@@ -88,13 +81,6 @@ public class Wypozyczenie {
 		this.nazwa_samochodu = nazwa_samochodu;
 	}
 	
-	public String getImie_pracownika(){
-		return imie_pracownika;
-	}
-	
-	public void setImie_pracownika(String imie_pracownika){
-		this.imie_pracownika = imie_pracownika;
-	}
 	
 	public String getNazwisko_pracownika(){
 		return nazwisko_pracownika;
@@ -111,6 +97,23 @@ public class Wypozyczenie {
 	public void setMiejsce_ulica(String miejsce_ulica){
 		this.miejsce_ulica = miejsce_ulica;
 	}
+	
+	public String getImie_pracownika(){
+		return imie_pracownika;
+	}
+	
+	public void setImie_pracownika(String imie_pracownika){
+		this.imie_pracownika = imie_pracownika;
+	}
+	
+	public String getImie_klienta(){
+		return imie_klienta;
+	}
+	
+	public void setImie_klienta(String imie_klienta){
+		this.imie_klienta = imie_klienta;
+	}
+	
 	
 
 }

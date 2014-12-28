@@ -16,19 +16,42 @@ public class WypozyczenieDaoImpl implements WypozyczenieDao {
 	
 	@Autowired
 	DataSource dataSource;
+	private Object jdbcTemplate;
 	
 	public void insertData(Wypozyczenie Wypozyczenie){
-		//SELECT id_samochodu FROM Samochod JOIN wypozyczenie WHERE marka=nazwa_samochodu
-		String sql = "INSERT INTO Wypozyczenie (data_wypozyczenia,Samochod_id_samochodu, Miejsce_id_miejsca, Pracownik_id_pracownika, Klient_id_klienta, imie_klienta)"
-					 + "?, ?, ?, ?, ?, ?";
+		//SELECT a.id_klienta FROM Klient a INNER JOIN Wypozyczenie b WHERE a.nazwisko = b.nazwisko_klienta
+		String sql = "INSERT INTO Wypozyczenie (data_wypozyczenia, Samochod_id_samochodu, Miejsce_id_miejsca, Pracownik_id_pracownika, Klient_id_klienta"
+				+ ",nazwisko_klienta, nazwa_samochodu, nazwisko_pracownika, imie_klienta, imie_pracownika)"
+					 + " VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		String klientNazwisko = Wypozyczenie.nazwisko_klienta;
+		String klientImie = Wypozyczenie.imie_klienta;
+		String pracownikNazwisko = Wypozyczenie.nazwisko_pracownika;
+		String pracownikImie = Wypozyczenie.imie_pracownika;
+		String nazwaSamochodu =  Wypozyczenie.nazwa_samochodu;
+		String miejsceUlica = Wypozyczenie.miejsce_ulica;
+		
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
+		int Klient_id = jdbcTemplate.queryForObject(
+		        "SELECT id_klienta FROM Klient WHERE nazwisko = ?", Integer.class, klientNazwisko);
+		String Klient_imie = jdbcTemplate.queryForObject(
+		        "SELECT imie FROM Klient WHERE nazwisko = ?", String.class, klientNazwisko);
+		int Pracownik_id = jdbcTemplate.queryForObject(
+		        "SELECT id_pracownika FROM Pracownik WHERE nazwisko = ?", Integer.class, pracownikNazwisko);
+		String Pracownik_imie = jdbcTemplate.queryForObject(
+		        "SELECT imie FROM Pracownik WHERE nazwisko = ?", String.class, pracownikNazwisko);
+		int Samochod_id = jdbcTemplate.queryForObject(
+		        "SELECT id_samochodu FROM Samochod WHERE marka = ?", Integer.class, nazwaSamochodu);
+		int Miejsce_id = jdbcTemplate.queryForObject(
+		        "SELECT id_miejsca FROM Miejsce WHERE ulica = ?", Integer.class, miejsceUlica);
 		
-		//String sql_id_samochodu = "INSERT INTO Wypozyczenie (Samochod_id_samochodu) SELECT id_samochodu FROM Samochod a JOIN Wypozyczenie b WHERE a.marka = b.nazwa_samochodu";
-		//jdbcTemplate.update(sql_id_samochodu);
-		jdbcTemplate.update(sql, new Object[]{Wypozyczenie.getData_wypozyczenia(),Wypozyczenie.getSamochod_id_samochodu(),
-					Wypozyczenie.getMiejsce_id_miejsca(), Wypozyczenie.getPracownik_id_pracownika(), Wypozyczenie.getKlient_id_klienta(), Wypozyczenie.getImie_klienta()});
+
+		jdbcTemplate.update(sql, new Object[]{Wypozyczenie.getData_wypozyczenia(),Samochod_id,
+					Miejsce_id, Pracownik_id, Klient_id,
+					Wypozyczenie.getNazwisko_klienta(), Wypozyczenie.getNazwa_samochodu(), Wypozyczenie.getNazwisko_pracownika(),
+					Klient_imie, Pracownik_imie});
 		
 		
 	}
@@ -52,12 +75,37 @@ public class WypozyczenieDaoImpl implements WypozyczenieDao {
 	@Override
 	public void updateData(Wypozyczenie Wypozyczenie){
 		String sql = "UPDATE Wypozyczenie set data_wypozyczenia = ?, Samochod_id_samochodu = ?, Miejsce_id_miejsca = ?, "
-				+ "Pracownik_id_pracownika = ?, Klient_id_klienta = ?, imie_klienta = ? WHERE id_wypozyczenia=?";
+				+ "Pracownik_id_pracownika = ?, Klient_id_klienta = ?, nazwisko_klienta = ?, nazwa_samochodu = ?,"
+				+ "nazwisko_pracownika = ?, imie_klienta = ?, imie_pracownika = ? WHERE id_wypozyczenia=?";
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
-		jdbcTemplate.update(sql, new Object[]{Wypozyczenie.getData_wypozyczenia(), Wypozyczenie.getSamochod_id_samochodu(),
-				Wypozyczenie.getMiejsce_id_miejsca(), Wypozyczenie.getPracownik_id_pracownika(), Wypozyczenie.getKlient_id_klienta(), Wypozyczenie.getImie_klienta()});
+		String klientNazwisko = Wypozyczenie.nazwisko_klienta;
+		String klientImie = Wypozyczenie.imie_klienta;
+		String pracownikNazwisko = Wypozyczenie.nazwisko_pracownika;
+		String pracownikImie = Wypozyczenie.imie_pracownika;
+		String nazwaSamochodu =  Wypozyczenie.nazwa_samochodu;
+		String miejsceUlica = Wypozyczenie.miejsce_ulica;
+		
+		
+		int Klient_id = jdbcTemplate.queryForObject(
+		        "SELECT id_klienta FROM Klient WHERE nazwisko = ?", Integer.class, klientNazwisko);
+		String Klient_imie = jdbcTemplate.queryForObject(
+		        "SELECT imie FROM Klient WHERE nazwisko = ?", String.class, klientNazwisko);
+		int Pracownik_id = jdbcTemplate.queryForObject(
+		        "SELECT id_pracownika FROM Pracownik WHERE nazwisko = ?", Integer.class, pracownikNazwisko);
+		String Pracownik_imie = jdbcTemplate.queryForObject(
+		        "SELECT imie FROM Pracownik WHERE nazwisko = ?", String.class, pracownikNazwisko);
+		int Samochod_id = jdbcTemplate.queryForObject(
+		        "SELECT id_samochodu FROM Samochod WHERE marka = ?", Integer.class, nazwaSamochodu);
+		int Miejsce_id = jdbcTemplate.queryForObject(
+		        "SELECT id_miejsca FROM Miejsce WHERE ulica = ?", Integer.class, miejsceUlica);
+		
+		
+		jdbcTemplate.update(sql, new Object[]{Wypozyczenie.getData_wypozyczenia(),Samochod_id,
+				Miejsce_id, Pracownik_id, Klient_id,
+				Wypozyczenie.getNazwisko_klienta(), Wypozyczenie.getNazwa_samochodu(), Wypozyczenie.getNazwisko_pracownika(),
+				Klient_imie, Pracownik_imie, Wypozyczenie.getId_wypozyczenia()});
 	
 		
 	}

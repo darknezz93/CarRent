@@ -83,7 +83,19 @@ public class WypozyczeniePageController {
 		
 		wypozyczenie = wypozyczenieService.getWypozyczenie(id);
 		
+		List<Klient> listaKlientow = klientService.getKlientList();
+		List<Samochod> listaSamochodow = samochodService.getSamochodList();
+		List<Pracownik> listaPracownikow = pracownikService.getPracownikList();
+		List<Miejsce> listaMiejsc = miejsceService.getMiejsceList();
+		
+		Map<String, Object> map1 = new HashMap<String, Object>();
 		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("klient", listaKlientow);
+		map.put("pracownik", listaPracownikow);
+		map.put("samochod", listaSamochodow);
+		map.put("miejsce", listaMiejsc);
+		
+		
 		map.put("wypozyczenie", wypozyczenie);
 		return new ModelAndView("editWypozyczenie", "map", map);
 	}

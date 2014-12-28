@@ -258,41 +258,87 @@ iframe{
       
       <div>  
        <form:form method="post" action="updateWypozyczenie" modelAttribute="wypozyczenie">  
-        <table>  
+        <table> 
          <tr>  
-          <td>Imie :</td>  
-          <td><form:input path="imie"  
+          <td>Data wypozyczenia :</td>  
+          <td><form:input path="data_wypozyczenia"  
             value="${map.wypozyczenie.data_wypozyczenia}" />  
           </td>  
-         </tr>  
-         <tr>  
-          <td>Nazwisko :</td>  
-          <td><form:input path="nazwisko" value="${map.klient.nazwisko}" />  
-          </td>  
-         </tr>  
-         <tr>  
-          <td>Telefon :</td>  
-          <td><form:input path="telefon" value="${map.klient.telefon}" />  
-          </td>  
-         </tr>  
-         <tr>
-         <tr>  
-          <td>Ulica:</td>  
-          <td><form:input path="ulica" value="${map.klient.ulica}" />  
-          </td>  
-         </tr>  
-         <tr>
-         <tr>  
-          <td>Numer :</td>  
-          <td><form:input path="numer" value="${map.klient.numer}" />  
-          </td>  
-         </tr>  
-         <tr>
-         <tr>  
-          <td>Miasto :</td>  
-          <td><form:input path="miasto" value="${map.klient.miasto}" />  
-          </td>  
-         </tr>  
+         </tr> 
+    
+      <tr>   
+      <td>Nazwisko klienta :</td>  
+      <td><spring:bind path="nazwisko_klienta">  
+        <select name="nazwisko_klienta">  
+         <c:forEach items='${map.klient}' var='single_klient'>  
+          <c:choose>  
+           <c:when test="${single_klient.nazwisko eq map.wypozyczenie.nazwisko_klienta}">
+            <option value="${single_klient.nazwisko}" selected="true">${single_klient.nazwisko}</option>
+           </c:when>
+           <c:otherwise>  
+            <option value="${single_klient.nazwisko}">${single_klient.nazwisko}</option>  
+           </c:otherwise>  
+          </c:choose>  
+         </c:forEach>  
+        </select>  
+       </spring:bind></td>  
+     </tr>
+     
+     <tr>   
+      <td>Nazwisko pracownika :</td>  
+      <td><spring:bind path="nazwisko_pracownika">  
+        <select name="nazwisko_pracownika">  
+         <c:forEach items='${map.pracownik}' var='single_pracownik'>  
+          <c:choose>  
+           <c:when test="${single_pracownik.nazwisko eq map.wypozyczenie.nazwisko_pracownika}"> 
+            <option value="${single_pracownik.nazwisko}" selected="true">${single_pracownik.nazwisko}</option>  
+           </c:when>  
+           <c:otherwise>  
+            <option value="${single_pracownik.nazwisko}">${single_pracownik.nazwisko}</option>  
+           </c:otherwise>  
+          </c:choose>  
+         </c:forEach>  
+        </select>  
+       </spring:bind></td>  
+     </tr>
+     
+     <tr>   
+      <td>Nazwa samochodu :</td>  
+      <td><spring:bind path="nazwa_samochodu">  
+        <select name="nazwa_samochodu">  
+         <c:forEach items='${map.samochod}' var='single_samochod'>  
+          <c:choose>  
+           <c:when test="${single_samochod.marka eq map.wypozyczenie.nazwa_samochodu}">
+            <option value="${single_samochod.marka}" selected="true">${single_samochod.marka}</option>  
+           </c:when>  
+           <c:otherwise>  
+            <option value="${single_samochod.marka}">${single_samochod.marka}</option>  
+           </c:otherwise>  
+          </c:choose>  
+         </c:forEach>  
+        </select>  
+       </spring:bind></td>  
+     </tr>
+     
+     
+     <tr>   
+      <td>Miejsce odbioru :</td>  
+      <td><spring:bind path="miejsce_ulica">  
+        <select name="miejsce_ulica">  
+         <c:forEach items='${map.miejsce}' var='single_miejsce'>  
+          <c:choose>  
+           <c:when test="${single_miejsce.ulica eq map.wypozyczenie.miejsce_ulica}"> 
+            <option value="${single_miejsce.ulica}" selected="true">${single_miejsce.ulica}</option>  
+           </c:when>  
+           <c:otherwise>  
+            <option value="${single_miejsce.ulica}">${single_miejsce.ulica}</option>  
+           </c:otherwise>  
+          </c:choose>  
+         </c:forEach>  
+        </select>  
+       </spring:bind></td>  
+     </tr>
+   
  
          <tr>  
           <td> </td>  
@@ -300,7 +346,7 @@ iframe{
           </td>  
          </tr>  
         </table>  
-        <form:hidden path="id_klienta" value="${map.klient.id_klienta}" />  
+        <form:hidden path="id_wypozyczenia" value="${map.wypozyczenie.id_wypozyczenia}" />  
       
        </form:form>  
       </div>  

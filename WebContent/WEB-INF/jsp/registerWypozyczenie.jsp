@@ -256,13 +256,13 @@ iframe{
     
       <tr>   
       <td>Nazwisko klienta :</td>  
-      <td><spring:bind path="nazwisko">  
-        <select name="nazwisko">  
+      <td><spring:bind path="nazwisko_klienta">  
+        <select name="nazwisko_klienta">  
          <c:forEach items='${map.klient}' var='single_klient'>  
           <c:choose>  
-           <c:when test="${single_klient.nazwisko eq map.wypozyczenie.nazwisko_klienta}">  
-            <option value="${single_klient.nazwisko}" selected="true">${single_klient.nazwisko}</option>  
-           </c:when>  
+           <c:when test="${single_klient.nazwisko eq map.wypozyczenie.nazwisko_klienta}">
+            <option value="${single_klient.nazwisko}" selected="true">${single_klient.nazwisko}</option>
+           </c:when>
            <c:otherwise>  
             <option value="${single_klient.nazwisko}">${single_klient.nazwisko}</option>  
            </c:otherwise>  
@@ -274,11 +274,11 @@ iframe{
      
      <tr>   
       <td>Nazwisko pracownika :</td>  
-      <td><spring:bind path="nazwisko">  
-        <select name="nazwisko">  
+      <td><spring:bind path="nazwisko_pracownika">  
+        <select name="nazwisko_pracownika">  
          <c:forEach items='${map.pracownik}' var='single_pracownik'>  
           <c:choose>  
-           <c:when test="${single_pracownik.nazwisko eq map.wypozyczenie.nazwisko_pracownika}">  
+           <c:when test="${single_pracownik.nazwisko eq map.wypozyczenie.nazwisko_pracownika}"> 
             <option value="${single_pracownik.nazwisko}" selected="true">${single_pracownik.nazwisko}</option>  
            </c:when>  
            <c:otherwise>  
@@ -292,11 +292,11 @@ iframe{
      
      <tr>   
       <td>Nazwa samochodu :</td>  
-      <td><spring:bind path="marka">  
-        <select name="marka">  
+      <td><spring:bind path="nazwa_samochodu">  
+        <select name="nazwa_samochodu">  
          <c:forEach items='${map.samochod}' var='single_samochod'>  
           <c:choose>  
-           <c:when test="${single_samochod.marka eq map.wypozyczenie.nazwa_samochodu}">  
+           <c:when test="${single_samochod.marka eq map.wypozyczenie.nazwa_samochodu}">
             <option value="${single_samochod.marka}" selected="true">${single_samochod.marka}</option>  
            </c:when>  
            <c:otherwise>  
@@ -311,11 +311,11 @@ iframe{
      
      <tr>   
       <td>Miejsce odbioru :</td>  
-      <td><spring:bind path="miejsce">  
-        <select name="miejsce">  
+      <td><spring:bind path="miejsce_ulica">  
+        <select name="miejsce_ulica">  
          <c:forEach items='${map.miejsce}' var='single_miejsce'>  
           <c:choose>  
-           <c:when test="${single_miejsce.ulica eq map.wypozyczenie.miejsce_ulica}">  
+           <c:when test="${single_miejsce.ulica eq map.wypozyczenie.miejsce_ulica}"> 
             <option value="${single_miejsce.ulica}" selected="true">${single_miejsce.ulica}</option>  
            </c:when>  
            <c:otherwise>  
@@ -329,7 +329,6 @@ iframe{
      
      
              
-
          <tr> 
           <td> </td>  
           <td><input type="submit" value="Utwórz wypożyczenie" /></td>  
