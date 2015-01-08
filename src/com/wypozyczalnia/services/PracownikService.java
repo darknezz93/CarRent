@@ -10,6 +10,7 @@ public interface PracownikService {
 	public void deleteData(String id);
 	public Pracownik getPracownik(String id);
 	public void updateData(Pracownik pracownik);
+	public void deletePracownikLowestSalary();
 	
 
 }

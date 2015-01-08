@@ -49,6 +49,12 @@ public class PracownikPageController {
 		return new ModelAndView("pracownikList", "pracownikList", PracownikList);
 	}
 	
+	@RequestMapping("/deletePracownikLowestSalary")
+	public String deletePracownikLowestSalary(){
+		PracownikService.deletePracownikLowestSalary();
+		return "redirect:/getPracownik";
+	}
+	
 	@RequestMapping("/editPracownik")
 	public ModelAndView editPracownik(@RequestParam String id, @ModelAttribute Pracownik pracownik){
 		

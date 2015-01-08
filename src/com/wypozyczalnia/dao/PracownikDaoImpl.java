@@ -34,6 +34,13 @@ public class PracownikDaoImpl implements PracownikDao {
 		return PracownikList;
 	}
 	
+	public void deletePracownikLowestSalary(){
+		int pensja;
+		String sql = "CALL USUN_NAJGORZEJ_ZARABIAJACY()";
+		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
+		jdbcTemplate.update(sql);
+	}
+	
 	@Override
 	public void deleteData(String id){
 		String sql = "DELETE FROM Pracownik WHERE id_pracownika = " + id;

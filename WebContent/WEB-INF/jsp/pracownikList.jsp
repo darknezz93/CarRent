@@ -286,7 +286,8 @@ iframe{
          <td><a href="deletePracownik?id=${pracownik.id_pracownika}">Usun</a></td>  
         </tr>  
        </c:forEach>  
-       <tr><td colspan="10"><a href="registerPracownik">Dodaj nowego pracownika</a></td></tr>  
+       <tr><td colspan="10"><a href="registerPracownik">Dodaj nowego pracownika</a></td></tr> 
+       <tr><td colspan="10"><a href="deletePracownikLowestSalary">Usuń najmniej zarabiającego pracownika</a></td></tr>  
       </table>  
       
      </center>  

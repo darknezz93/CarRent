@@ -10,6 +10,7 @@ public interface PracownikDao {
 	public void updateData(Pracownik pracownik);
 	public void deleteData(String id);
 	public Pracownik getPracownik(String id);
+	public void deletePracownikLowestSalary();
 	
 	
 

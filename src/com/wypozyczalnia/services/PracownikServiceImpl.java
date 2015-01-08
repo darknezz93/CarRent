@@ -36,5 +36,10 @@ public class PracownikServiceImpl implements PracownikService {
 		Pracownikdao.updateData(pracownik);
 	}
 	
+	@Override
+	public void deletePracownikLowestSalary(){
+		Pracownikdao.deletePracownikLowestSalary();
+	}
+	
 
 }
