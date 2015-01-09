@@ -3,6 +3,7 @@ package com.wypozyczalnia.services;
 import java.util.List;  
 
 import org.springframework.beans.factory.annotation.Autowired;  
+
 import com.wypozyczalnia.dao.SamochodDao;  
 import com.wypozyczalnia.domain.Samochod;  
 
@@ -35,6 +36,5 @@ public class SamochodServiceImpl implements SamochodService {
 	public void updateData(Samochod Samochod){
 		Samochoddao.updateData(Samochod);
 	}
-	
 
 }

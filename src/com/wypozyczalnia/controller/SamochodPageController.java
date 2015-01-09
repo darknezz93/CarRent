@@ -59,6 +59,7 @@ public class SamochodPageController {
 		return new ModelAndView("editSamochod", "map", map);
 	}
 	
+	
 	@RequestMapping("/updateSamochod")
 	public String updateSamochod(@ModelAttribute Samochod Samochod){
 		SamochodService.updateData(Samochod);

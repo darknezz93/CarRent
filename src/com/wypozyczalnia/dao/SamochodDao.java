@@ -10,7 +10,5 @@ public interface SamochodDao {
 	public void updateData(Samochod samochod);
 	public void deleteData(String id);
 	public Samochod getSamochod(String id);
-	
-	
 
 }

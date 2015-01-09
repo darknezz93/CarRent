@@ -2,9 +2,12 @@ package com.wypozyczalnia.dao;
 
 import java.util.ArrayList;  
 import java.util.List;  
+
 import javax.sql.DataSource;  
+
 import org.springframework.beans.factory.annotation.Autowired;  
 import org.springframework.jdbc.core.JdbcTemplate;  
+
 import com.wypozyczalnia.domain.Samochod;  
 import com.wypozyczalnia.jdbc.SamochodRowMapper; 
 
@@ -28,12 +31,12 @@ public class SamochodDaoImpl implements SamochodDao {
 	
 	public List<Samochod> getSamochodList(){
 		List SamochodList = new ArrayList();
-		
 		String sql = "SELECT * FROM Samochod";
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		SamochodList = jdbcTemplate.query(sql, new SamochodRowMapper());
 		return SamochodList;
 	}
+	
 	
 	@Override
 	public void deleteData(String id){
@@ -59,7 +62,7 @@ public class SamochodDaoImpl implements SamochodDao {
 	@Override
 	public Samochod getSamochod(String id){
 		List<Samochod> SamochodList = new ArrayList<Samochod>();
-		String sql = "SELECT * FROM Samochod where id_samochodu =" +id;
+		String sql = "SELECT * FROM Samochod where id_samochodu = " +id;
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		SamochodList = jdbcTemplate.query(sql, new SamochodRowMapper());
 		return SamochodList.get(0);

@@ -38,7 +38,10 @@
      <bean id="miejsceDao" class="com.wypozyczalnia.dao.MiejsceDaoImpl" />  
      <bean id="miejsceService" class="com.wypozyczalnia.services.MiejsceServiceImpl" />
      <bean id="wypozyczenieDao" class="com.wypozyczalnia.dao.WypozyczenieDaoImpl" />  
-     <bean id="wypozyczenieService" class="com.wypozyczalnia.services.WypozyczenieServiceImpl" />    
+     <bean id="wypozyczenieService" class="com.wypozyczalnia.services.WypozyczenieServiceImpl" />
+     <bean id="przebiegDao" class="com.wypozyczalnia.dao.PrzebiegDaoImpl" />  
+     <bean id="przebiegService" class="com.wypozyczalnia.services.PrzebiegServiceImpl" />  
+        
       
      <!-- declare datasource bean -->  
      <bean id="dataSource"  

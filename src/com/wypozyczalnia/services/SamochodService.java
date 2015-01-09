@@ -1,6 +1,7 @@
 package com.wypozyczalnia.services;
 
 import java.util.List;
+
 import com.wypozyczalnia.domain.Samochod;
 
 public interface SamochodService {

@@ -4,7 +4,7 @@
     <%@page language="Java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
     <html>  
     <head>  
-    <title>Lista samochodów</title>  
+    <title>Przebieg Samochodow</title>  
     <style>  
     body {  
      font-size: 20px;  
@@ -260,44 +260,27 @@ iframe{
     <body>  
      <center>  
              
-     <b>Samochody</b>  
+     <b>Przebieg samochodów</b>  
        
       
       <table border="1">  
        <tr>  
-        <td class="heading">Samochod Id</td>  
-        <td class="heading">Cena za dobe</td>  
-        <td class="heading">Marka</td>  
-        <td class="heading">Rok produkcji</td>  
-        <td class="heading">Kolor</td>  
-        <td class="heading">Przebieg</td>  
-        <td class="heading">Pojemność silnika</td> 
-        <td class="heading">Edytuj</td>  
-        <td class="heading">Usun</td>    
+        <td class="heading">Przebieg samochodow</td>  
+   
        </tr>  
-       <c:forEach var="samochod" items="${samochodList}">  
+       <c:forEach var="przebieg" items="${przebiegList}">  
         <tr>  
-         <td>${samochod.id_samochodu}</td>  
-         <td>${samochod.cena_za_dobe}</td>  
-         <td>${samochod.marka}</td>  
-         <td>${samochod.rok_produkcji}</td>  
-         <td>${samochod.kolor}</td>
-         <td>${samochod.przebieg}</td>
-         <td>${samochod.pojemnosc_silnika}</td>  
-         <td><a href="editSamochod?id=${samochod.id_samochodu}">Edytuj</a></td>  
-         <td><a href="deleteSamochod?id=${samochod.id_samochodu}">Usun</a></td>  
+         <td>${przebieg.przebieg} km</td>    
         </tr> 
-       </c:forEach>  
-       <tr><td colspan="10"><a href="registerSamochod">Dodaj nowy samochód</a></td></tr>  
-      </table> 
-      
+       </c:forEach>   
+      </table>  
       
       </br>
       <div>  
-       <form:form method="post" action="getPrzebieg" modelAttribute="przebieg">  
+       <form:form method="post" action="getSamochod" modelAttribute="samochod">  
       <tr> 
           <td> </td>  
-          <td><input type="submit" value="Sprawdź łączny przebieg" /></td>  
+          <td><input type="submit" value="Powrót" /></td>  
        </tr> 
        </form:form>
        </div>
