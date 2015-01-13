@@ -8,6 +8,8 @@ import java.util.Map;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;  
+import org.springframework.dao.DataAccessException;
+import org.springframework.jca.cci.InvalidResultSetAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;  
 import org.springframework.web.bind.annotation.ModelAttribute;  
@@ -67,9 +69,24 @@ public class WypozyczeniePageController {
 	
 	@RequestMapping("/insertWypozyczenie")
 	public String insertData(@ModelAttribute Wypozyczenie wypozyczenie){
-		if(wypozyczenie != null)
-			wypozyczenieService.insertData(wypozyczenie);
-		return "redirect:/getWypozyczenie";
+		try
+		{
+			if(wypozyczenie != null)
+				wypozyczenieService.insertData(wypozyczenie);
+			return "redirect:/getWypozyczenie";
+		}
+		catch (InvalidResultSetAccessException e) 
+		{
+			System.out.println("Niepoprawne dane");
+		    //throw new RuntimeException(e);
+		    return "redirect:/registerWypozyczenie";
+		} 
+		catch (DataAccessException e)
+		{
+			System.out.println("Niepoprawne dane");
+		    //throw new RuntimeException(e);
+			return "redirect:/registerWypozyczenie";
+		}
 	}
 	
 	@RequestMapping("/getWypozyczenie")

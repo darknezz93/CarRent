@@ -1,11 +1,14 @@
 package com.wypozyczalnia.dao;
 
+import java.sql.SQLException;
 import java.util.ArrayList;  
 import java.util.List;  
 
 import javax.sql.DataSource;  
 
 import org.springframework.beans.factory.annotation.Autowired;  
+import org.springframework.dao.DataAccessException;
+import org.springframework.jca.cci.InvalidResultSetAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;  
 
 import com.wypozyczalnia.domain.Samochod;
@@ -34,6 +37,7 @@ public class WypozyczenieDaoImpl implements WypozyczenieDao {
 		
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		
+		
 		int Klient_id = jdbcTemplate.queryForObject(
 		        "SELECT id_klienta FROM Klient WHERE nazwisko = ?", Integer.class, klientNazwisko);
 		String Klient_imie = jdbcTemplate.queryForObject(
@@ -47,13 +51,13 @@ public class WypozyczenieDaoImpl implements WypozyczenieDao {
 		int Miejsce_id = jdbcTemplate.queryForObject(
 		        "SELECT id_miejsca FROM Miejsce WHERE ulica = ?", Integer.class, miejsceUlica);
 		
-
+	
 		jdbcTemplate.update(sql, new Object[]{Wypozyczenie.getData_wypozyczenia(),Samochod_id,
 					Miejsce_id, Pracownik_id, Klient_id,
 					Wypozyczenie.getNazwisko_klienta(), Wypozyczenie.getNazwa_samochodu(), Wypozyczenie.getNazwisko_pracownika(),
 					Klient_imie, Pracownik_imie});
 		
-		
+
 	}
 	
 	public List<Wypozyczenie> getWypozyczenieList(){

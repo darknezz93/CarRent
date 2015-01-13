@@ -224,6 +224,8 @@ iframe{
     
     <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script>
 	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>
+	
+	
     
       
     <title>Tworzenie wypożyczenia samochodu</title>  
@@ -335,7 +337,7 @@ iframe{
          </tr>  
          <tr>  
             
-          <td colspan="10"><a href="getWypożyczenie">Zobacz obecna liste wypożyczeń</a></td>  
+          <td colspan="10"><a href="getWypozyczenie">Zobacz obecna liste wypożyczeń</a></td>  
          </tr>  
         </table>  
        </form:form>  

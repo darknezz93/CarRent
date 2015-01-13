@@ -222,8 +222,44 @@ iframe{
     <link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
     <link rel = "stylesheet" type="text/css" href= href="<%=request.getContextPath()%>/src/main/css/style.css"/>
     
-    <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script>
+    <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script> 
 	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>
+	
+	<script type="text/javascript">
+            function validate()
+            {
+                var imie = document.getElementById("imie");
+                var nazwisko = document.getElementById("nazwisko");
+                var dataZatrudnienia = document.getElementById("dataZatrudnienia");
+                var pensja = document.getElementById("pensja");
+                var telefon = document.getElementById("telefon");
+                
+                var imieVal = document.getElementById("imie").value;
+                var nazwiskoVal = document.getElementById("nazwisko").value;
+                var dataZatrudnieniaVal = document.getElementById("dataZatrudnienia").value;
+                var pensjaVal = document.getElementById("pensja").value;
+                var telefonVal = document.getElementById("telefon").value;
+                
+                
+        		//Date.format = 'yyyy-mm-dd';
+        		//var sprawdz = Date.fromString(dataZatrudnieniaVal); //zwraca true lub false w zaleznosci czy pasuje fo formatu
+
+                var valid = true;
+                if(imie.value.length<=0 || nazwisko.value.length<=0 || dataZatrudnienia.value.length<=0 || pensja.value.length<=0 || telefon.value.length<=0)
+                {
+                    alert("Nie zostawiaj pustych pól!");
+                    valid = false;
+                }
+                else{
+                    if(isNaN(pensjaVal) || isNaN(telefonVal) || telefonVal.length != 9 || !isNaN(imieVal) || !isNaN(nazwiskoVal)){
+                        alert("Podaj poprawne wartości");
+                valid = false;}
+            }
+            return valid;
+          };
+
+        </script>	
+	
     
       
     <title>Dodawanie pracownika</title>  
@@ -247,27 +283,27 @@ iframe{
      <b>Dodaj nowego pracownika</b>   
          
       <div>  
-       <form:form method="post" action="insertPracownik" modelAttribute="pracownik">  
+       <form:form method="post" action="insertPracownik" modelAttribute="pracownik" onsubmit="return validate()">  
         <table>  
          <tr>  
           <td>Imie :</td>  
-          <td><form:input path="imie" /></td>  
+          <td><form:input path="imie" required="true" type="text" id="imie" /></td>  
          </tr>  
          <tr>  
           <td>Nazwisko :</td>  
-          <td><form:input path="nazwisko" /></td>  
+          <td><form:input path="nazwisko" required="true" type="text" id="nazwisko" /></td>  
          </tr>  
          <tr>  
           <td>Data zatrudenienia :</td>  
-          <td><form:input path="data_zatrudnienia" /></td>  
+          <td><form:input path="data_zatrudnienia" required="true" id="dataZatrudnienia" /></td>  
          </tr>   
          <tr>  
           <td>Pensja :</td>  
-          <td><form:input path="pensja" /></td>  
+          <td><form:input path="pensja" required="true" type="number" id="pensja" /></td>  
          </tr>
          <tr>  
           <td>Telefon :</td>  
-          <td><form:input path="telefon" /></td>  
+          <td><form:input path="telefon" required="true" type="number" id="telefon" /></td>  
          </tr>
          <tr> 
           <td> </td>  

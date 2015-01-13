@@ -27,6 +27,30 @@
      border: thick;  
     }
     
+    .heading {  
+     font-size: 18px;  
+     color: white;  
+     font: bold;  
+     background-color: green;  
+     border: thick;  
+    }
+    
+     .heading_1 {  
+     font-size: 18px;  
+     color: yellow;  
+     font: bold;  
+     background-color: green;  
+     border: thick;  
+    }
+    
+     .heading_2 {  
+     font-size: 18px;  
+     color: white;  
+     font: bold;  
+     background-color: #F1D568;  
+     border: thick;  
+    }
+    
         header{
 	text-align:center;
 	background-color:rgba(252,252,232, 0.8);    #19A7FF
@@ -269,8 +293,8 @@ iframe{
         <td class="heading">Ulica</td>  
         <td class="heading">Numer</td>  
         <td class="heading">Miasto</td>  
-        <td class="heading">Edytuj</td>  
-        <td class="heading">Usun</td>    
+        <td class="heading_1">Edytuj</td>  
+        <td class="heading_1">Usun</td>    
        </tr>  
        <c:forEach var="miejsce" items="${miejsceList}">  
         <tr>  
@@ -282,7 +306,7 @@ iframe{
          <td><a href="deleteMiejsce?id=${miejsce.id_miejsca}">Usun</a></td>  
         </tr>  
        </c:forEach>  
-       <tr><td colspan="10"><a href="registerMiejsce">Dodaj nową lokalizację</a></td></tr>  
+       <tr class="heading_2"><td colspan="10"><a href="registerMiejsce">Dodaj nową lokalizację</a></td></tr>  
       </table>  
       
      </center>  

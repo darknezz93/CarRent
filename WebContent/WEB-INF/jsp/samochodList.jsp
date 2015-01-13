@@ -23,7 +23,23 @@
      font-size: 18px;  
      color: white;  
      font: bold;  
-     background-color: orange;  
+     background-color: green;  
+     border: thick;  
+    }
+    
+     .heading_1 {  
+     font-size: 18px;  
+     color: yellow;  
+     font: bold;  
+     background-color: green;  
+     border: thick;  
+    }
+    
+     .heading_2 {  
+     font-size: 18px;  
+     color: white;  
+     font: bold;  
+     background-color: #F1D568;  
      border: thick;  
     }
     
@@ -272,8 +288,8 @@ iframe{
         <td class="heading">Kolor</td>  
         <td class="heading">Przebieg</td>  
         <td class="heading">Pojemność silnika</td> 
-        <td class="heading">Edytuj</td>  
-        <td class="heading">Usun</td>    
+        <td class="heading_1">Edytuj</td>  
+        <td class="heading_1">Usun</td>    
        </tr>  
        <c:forEach var="samochod" items="${samochodList}">  
         <tr>  
@@ -288,7 +304,7 @@ iframe{
          <td><a href="deleteSamochod?id=${samochod.id_samochodu}">Usun</a></td>  
         </tr> 
        </c:forEach>  
-       <tr><td colspan="10"><a href="registerSamochod">Dodaj nowy samochód</a></td></tr>  
+       <tr class="heading_2"><td colspan="10"><a href="registerSamochod">Dodaj nowy samochód</a></td></tr>  
       </table> 
       
       

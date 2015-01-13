@@ -1,57 +1,13 @@
-     <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">  
     <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>  
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> 
     <%@page language="Java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%> 
     <html>  
-    <head>  
-    <title>Przebieg Samochodow</title>  
-    <style>  
-    body {  
-     font-size: 20px;  
-     color: teal;  
-     font-family: Calibri;  
-    }  
-      
-    td {  
-     font-size: 15px;  
-     color: black;  
-     width: 100px;  
-     height: 22px;  
-     text-align: center;  
-    }  
-    .heading {  
-     font-size: 18px;  
-     color: white;  
-     font: bold;  
-     background-color: orange;  
-     border: thick;  
-    }
+    <head>
     
-    .heading {  
-     font-size: 18px;  
-     color: white;  
-     font: bold;  
-     background-color: green;  
-     border: thick;  
-    }
     
-     .heading_1 {  
-     font-size: 18px;  
-     color: yellow;  
-     font: bold;  
-     background-color: green;  
-     border: thick;  
-    }
+    <style>
     
-     .heading_2 {  
-     font-size: 18px;  
-     color: white;  
-     font: bold;  
-     background-color: #F1D568;  
-     border: thick;  
-    }
-    
-        header{
+    header{
 	text-align:center;
 	background-color:rgba(252,252,232, 0.8);    #19A7FF
 	height: 30px;
@@ -256,17 +212,23 @@ iframe{
 
 #resume_content{
 	font-size: 24px;
-}  
+}
+    
     </style>
     
+    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-	<link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
+  
+    <link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
     <link rel = "stylesheet" type="text/css" href= href="<%=request.getContextPath()%>/src/main/css/style.css"/>
     
     <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script>
-	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>  
+	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>
+	
+	
+    
+      
+    <title>Tworzenie wypożyczenia samochodu</title>  
     </head> 
     
     <center>
@@ -279,36 +241,11 @@ iframe{
     <div id="menu"><a href = "http://localhost:8080/CarRent/registerWypozyczenie">Utwórz wypożyczenie</a></div>
 	</header>
 	</center>
-    
-     
-    <body>  
-     <center>  
-             
-     <b>Przebieg samochodów</b>  
+
        
-      
-      <table border="1">  
-       <tr>  
-        <td class="heading">Przebieg samochodow</td>  
-   
-       </tr>  
-       <c:forEach var="przebieg" items="${przebiegList}">  
-        <tr>  
-         <td>${przebieg.przebieg} km</td>    
-        </tr> 
-       </c:forEach>   
-      </table>  
-      
-      </br>
-      <div>  
-       <form:form method="post" action="getSamochod" modelAttribute="samochod">  
-      <tr> 
-          <td> </td>  
-          <td><input type="submit" value="Powrót" /></td>  
-       </tr> 
-       </form:form>
-       </div>
-      
-     </center>  
+    <body>  
+     
+ 
+    
     </body>  
     </html>  

@@ -1,5 +1,6 @@
 package com.wypozyczalnia.dao;
 
+import java.sql.SQLException;
 import java.util.List;
 
 import com.wypozyczalnia.domain.Samochod;

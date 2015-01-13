@@ -224,6 +224,44 @@ iframe{
     
     <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script>
 	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>
+	<script type = "text/javascript" src="http://code.jquery.com/jquery-1.9.1.js">
+		
+	</script> 
+	
+	
+	<script type="text/javascript">
+            function validate()
+            {
+                var imie = document.getElementById("imie");
+                var nazwisko = document.getElementById("nazwisko");
+                var telefon  = document.getElementById("telefon");
+                var ulica = document.getElementById("ulica");
+                var numer = document.getElementById("numer");
+                var miasto = document.getElementById("miasto");
+                
+                var imieVal = document.getElementById("imie").value;
+                var nazwiskoVal = document.getElementById("nazwisko").value;
+                var telefonVal  = document.getElementById("telefon").value;
+                var ulicaVal = document.getElementById("ulica").value;
+                var numerVal = document.getElementById("numer").value;
+                var miastoVal = document.getElementById("miasto").value;
+
+                var valid = true;
+                if(imie.value.length<=0 || nazwisko.value.length<=0 || telefon.value.length<=0 || ulica.value.length<=0 || numer.value.length<=0 || miasto.value.length<=0)
+                    {
+                        alert("Nie zostawiaj pustych pól!");
+                        valid = false;
+                    }
+                    else{
+                        if(isNaN(telefonVal) || isNaN(numerVal) || telefonVal.length != 9 || !isNaN(imieVal) || !isNaN(nazwiskoVal) || !isNaN(ulicaVal) || !isNaN(miastoVal)){
+                            alert("Podaj poprawne wartości");
+                    valid = false;}
+                }
+                return valid;
+            };
+
+        </script>
+	
     
       
     <title>Dodawanie klienta</title>  
@@ -247,31 +285,31 @@ iframe{
      <b>Dodaj nowego klienta</b>   
          
       <div>  
-       <form:form method="post" action="insertKlient" modelAttribute="klient">  
+       <form:form method="post" action="insertKlient" modelAttribute="klient" onsubmit="return validate()">  
         <table>  
          <tr>  
           <td>Imie :</td>  
-          <td><form:input path="imie" /></td>  
+          <td><form:input path="imie" type="text" required="true" id="imie" /></td>  
          </tr>  
          <tr>  
           <td>Nazwisko :</td>  
-          <td><form:input path="nazwisko" /></td>  
+          <td><form:input path="nazwisko" required="true" type="text" id="nazwisko" /></td>  
          </tr>  
          <tr>  
           <td>Telefon :</td>  
-          <td><form:input path="telefon" /></td>  
+          <td><form:input type="number" required="true" path="telefon" id="telefon" /></td>  
          </tr>   
          <tr>  
           <td>Ulica :</td>  
-          <td><form:input path="ulica" /></td>  
+          <td><form:input path="ulica" required="true" type="text" id="ulica" /></td>  
          </tr>
          <tr>  
           <td>Numer :</td>  
-          <td><form:input path="numer" /></td>  
+          <td><form:input path="numer" required="true" type="number" id="numer" /></td>  
          </tr>
          <tr>  
           <td>Miasto :</td>  
-          <td><form:input path="miasto" /></td>  
+          <td><form:input path="miasto" required="true" type="text" id="miasto" /></td>  
          </tr>
          <tr> 
           <td> </td>  

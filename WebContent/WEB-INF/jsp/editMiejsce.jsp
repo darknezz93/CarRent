@@ -235,6 +235,16 @@ iframe{
 	font-size: 24px;
 }  
     </style>  
+    
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
+    <link rel = "stylesheet" type="text/css" href= href="<%=request.getContextPath()%>/src/main/css/style.css"/>
+    
+    <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script>
+	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>  
+	
     </head>
     
     <center>

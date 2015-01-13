@@ -224,6 +224,33 @@ iframe{
     
     <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script>
 	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>
+	
+	<script type="text/javascript">
+            function validate()
+            {
+                var ulica = document.getElementById("ulica");
+                var numer = document.getElementById("numer");
+                
+                var ulicaVal = document.getElementById("ulica").value;
+                var numerVal = document.getElementById("numer").value;
+
+
+                var valid = true;
+                if(ulica.value.length<=0 || numer.value.length<=0 )
+                    {
+                        alert("Nie zostawiaj pustych pól!");
+                        valid = false;
+                    }
+                    else{
+                        if(isNaN(numerVal) || !isNaN(ulicaVal)){
+                            alert("Podaj poprawne wartości");
+                    valid = false;}
+                }
+                return valid;
+            };
+
+        </script>	
+	
     
       
     <title>Dodawanie lokalizacji</title>  
@@ -247,15 +274,15 @@ iframe{
      <b>Dodaj nową lokalizację</b>   
          
       <div>  
-       <form:form method="post" action="insertMiejsce" modelAttribute="miejsce">  
+       <form:form method="post" action="insertMiejsce" modelAttribute="miejsce" onsubmit="return validate()">  
         <table>  
          <tr>  
           <td>Ulica :</td>  
-          <td><form:input path="ulica" /></td>  
+          <td><form:input path="ulica" required="true" type="text" id="ulica"/></td>  
          </tr>  
          <tr>  
           <td>Numer :</td>  
-          <td><form:input path="numer" /></td>  
+          <td><form:input path="numer" required="true" type="number" id="numer" /></td>  
          </tr>
          
       

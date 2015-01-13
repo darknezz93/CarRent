@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;  
 
 import org.springframework.beans.factory.annotation.Autowired;  
+import org.springframework.dao.DataAccessException;
+import org.springframework.jca.cci.InvalidResultSetAccessException;
 import org.springframework.stereotype.Controller;  
 import org.springframework.web.bind.annotation.ModelAttribute;  
 import org.springframework.web.bind.annotation.RequestMapping;  
@@ -38,9 +40,24 @@ public class PracownikPageController {
 	
 	@RequestMapping("/insertPracownik")
 	public String insertData(@ModelAttribute Pracownik Pracownik){
-		if(Pracownik != null)
-			PracownikService.insertData(Pracownik);
-		return "redirect:/getPracownik";
+		try
+		{
+			if(Pracownik != null)
+				PracownikService.insertData(Pracownik);
+			return "redirect:/getPracownik";
+		}
+		catch (InvalidResultSetAccessException e) 
+		{
+			System.out.println("Niepoprawne dane");
+		    //throw new RuntimeException(e);
+		    return "redirect:/registerPracownik";
+		} 
+		catch (DataAccessException e)
+		{
+			System.out.println("Niepoprawne dane");
+		    //throw new RuntimeException(e);
+			return "redirect:/registerPracownik";
+		}
 	}
 	
 	@RequestMapping("/getPracownik")

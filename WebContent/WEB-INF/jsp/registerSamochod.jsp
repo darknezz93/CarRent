@@ -224,7 +224,40 @@ iframe{
     
     <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script>
 	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>
-    
+	
+	<script type="text/javascript">
+            function validate()
+            {
+                var cena = document.getElementById("cena");
+                var marka = document.getElementById("marka");
+                var rok = document.getElementById("rok");
+                var kolor = document.getElementById("kolor");
+                var przebieg = document.getElementById("przebieg");
+                var silnik = document.getElementById("silnik");
+                
+                var cenaVal = document.getElementById("cena").value;
+                var markaVal = document.getElementById("marka").value;
+                var rokVal = document.getElementById("rok").value;
+                var kolorVal = document.getElementById("kolor").value;
+                var przebiegVal = document.getElementById("przebieg").value;
+                var silnikVal = document.getElementById("silnik").value;
+
+                var valid = true;
+                if(cena.value.length<=0 || marka.value.length<=0 || rok.value.length<=0 || kolor.value.length<=0 || przebieg.value.length<=0 || silnik.value.length<=0)
+                    {
+                        alert("Nie zostawiaj pustych pól!");
+                        valid = false;
+                    }
+                    else{
+                        if(isNaN(cenaVal) || isNaN(rokVal) || isNaN(przebiegVal) || isNan(silnikVal) || !isNaN(markaVal) || !isNaN(kolorVal)){
+                            alert("Podaj poprawne wartości");
+                    valid = false;}
+                }
+                return valid;
+            };
+
+        </script>
+	 
       
     <title>Dodawanie samochodu</title>  
     </head> 
@@ -247,31 +280,31 @@ iframe{
      <b>Dodaj nowy samochód</b>   
          
       <div>  
-       <form:form method="post" action="insertSamochod" modelAttribute="samochod">  
+       <form:form method="post" action="insertSamochod" modelAttribute="samochod" onsubmit="return validate()">  
         <table>  
          <tr>  
           <td>Cena za dobe :</td>  
-          <td><form:input path="Cena_za_dobe" /></td>  
+          <td><form:input path="Cena_za_dobe" required="true" id="cena" type="number" /></td>  
          </tr>  
          <tr>  
           <td>Marka :</td>  
-          <td><form:input path="marka" /></td>  
+          <td><form:input path="marka" required="true" id="marka" /></td>  
          </tr>  
          <tr>  
           <td>Rok produkcji :</td>  
-          <td><form:input path="rok_produkcji" /></td>  
+          <td><form:input path="rok_produkcji" required="true" id="rok" type="number" /></td>  
          </tr>   
          <tr>  
           <td>Kolor :</td>  
-          <td><form:input path="kolor" /></td>  
+          <td><form:input path="kolor" required="true" id="kolor"  /></td>  
          </tr>
          <tr>  
           <td>Przebieg :</td>  
-          <td><form:input path="przebieg" /></td>  
+          <td><form:input path="przebieg" required="true" id="przebieg" type="number" /></td>  
          </tr>
          <tr>  
           <td>Pojemnosc silnika :</td>  
-          <td><form:input path="pojemnosc_silnika" /></td>  
+          <td><form:input path="pojemnosc_silnika" required="true" id="silnik"/></td>  
          </tr>
          <tr> 
           <td> </td>  

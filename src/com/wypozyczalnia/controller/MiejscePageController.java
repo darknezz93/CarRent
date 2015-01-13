@@ -27,11 +27,11 @@ public class MiejscePageController {
 	public ModelAndView registerMiejsce(@ModelAttribute Miejsce Miejsce){
 		
 		List<String> cityList = new ArrayList<String>();
-		cityList.add("Poznañ");
+		cityList.add("Poznan");
 		cityList.add("Warszawa");
 		cityList.add("Wroclaw");
 		cityList.add("Krakow");
-		cityList.add("Gdañsk");
+		cityList.add("Gdansk");
 		
 		Map<String, List> map = new HashMap<String, List>();
 		map.put("cityList", cityList);

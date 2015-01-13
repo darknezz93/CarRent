@@ -27,6 +27,30 @@
      border: thick;  
     }
     
+    .heading {  
+     font-size: 18px;  
+     color: white;  
+     font: bold;  
+     background-color: green;  
+     border: thick;  
+    }
+    
+     .heading_1 {  
+     font-size: 18px;  
+     color: yellow;  
+     font: bold;  
+     background-color: green;  
+     border: thick;  
+    }
+    
+     .heading_2 {  
+     font-size: 18px;  
+     color: white;  
+     font: bold;  
+     background-color: #F1D568;  
+     border: thick;  
+    }
+    
         header{
 	text-align:center;
 	background-color:rgba(252,252,232, 0.8);    #19A7FF
@@ -273,8 +297,8 @@ iframe{
         <td class="heading">Miejsce odbioru Id</td>      
         <td class="heading">Imie pracownika</td>  
         <td class="heading">Nazwisko pracownika</td> 
-        <td class="heading">Edytuj</td>
-        <td class="heading">Usuń</td>       
+        <td class="heading_1">Edytuj</td>
+        <td class="heading_1">Usuń</td>       
        </tr>  
        <c:forEach var="wypozyczenie" items="${wypozyczenieList}">  
         <tr>  
@@ -290,7 +314,7 @@ iframe{
          <td><a href="deleteWypozyczenie?id=${wypozyczenie.id_wypozyczenia}">Usun</a></td>  
         </tr>  
        </c:forEach>  
-       <tr><td colspan="10"><a href="registerWypozyczenie">Dodaj nowe wypożyczenie</a></td></tr>  
+       <tr><td class="heading_2" colspan="10"><a href="registerWypozyczenie">Dodaj nowe wypożyczenie</a></td></tr>  
       </table>  
       
      </center>  
