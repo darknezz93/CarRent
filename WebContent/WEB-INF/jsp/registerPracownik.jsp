@@ -225,6 +225,21 @@ iframe{
     <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script> 
 	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>
 	
+	 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+	 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	 <link rel="stylesheet" href="/resources/demos/style.css">
+	 
+	 
+	  <script>
+	  $(function() {
+		$( "#dataZatrudnienia" ).datepicker({dateFormat: "yy-mm-dd"});
+	  });
+	 </script>
+	 
+	 
+	 
+	
 	<script type="text/javascript">
             function validate()
             {
@@ -251,9 +266,31 @@ iframe{
                     valid = false;
                 }
                 else{
-                    if(isNaN(pensjaVal) || isNaN(telefonVal) || telefonVal.length != 9 || !isNaN(imieVal) || !isNaN(nazwiskoVal)){
-                        alert("Podaj poprawne wartości");
-                valid = false;}
+                    if(isNaN(pensjaVal))
+                    {
+                        alert("Podaj poprawne wartość pola Pensja.");
+                		valid = false;
+                	}
+                    else if(isNaN(telefonVal))
+                    	{
+                    		alert("Podaj poprawnie Telefon.");
+                    		valid= false;
+                    	}
+                    else if(telefonVal.length != 9)
+                    	{
+                    		alert("Wartość pola Telefon powinna składać się z 9 cyfr.");
+                    		valid = false;
+                    	}
+                    else if(!isNaN(imieVal))
+                    	{
+                    		alert("Podaj poprawnie wartość pola Imie.");
+                    		valid = false;
+                    	}
+                    else if(!isNaN(nazwiskoVal))
+                    	{
+                    		alert("Podaj poprawnie wartość pola Nazwisko.");
+                    		valid = false;
+                    	}
             }
             return valid;
           };

@@ -249,9 +249,41 @@ iframe{
                         valid = false;
                     }
                     else{
-                        if(isNaN(cenaVal) || isNaN(rokVal) || isNaN(przebiegVal) || isNan(silnikVal) || !isNaN(markaVal) || !isNaN(kolorVal)){
-                            alert("Podaj poprawne wartości");
-                    valid = false;}
+                        if(isNaN(cenaVal))
+                        {
+                            alert("Wprowadź poprawnie cenę.");
+                    		valid = false;
+                        }
+                        else if(isNaN(rokVal))
+                        	{
+                        		alert("Podaj poprawną wartość Roku produkcji.")
+                        		valid = false;
+                        	}
+                        else if(isNaN(przebiegVal))
+                        	{
+                        		alert("Podaj poprawną wartość Przebiegu.");
+                        		valid = false;
+                        	}
+                        else if(isNaN(silnikVal))
+                        	{
+                        		alert("Podaj poprawną wartość Pojemności silnika.");
+                        		valid = false;
+                        	}
+                        else if(!isNaN(markaVal))
+                        	{
+                        		alert("Podaj poprawną wartość Marki samochodu.");
+                        		valid = false;
+                        	}
+                        else if(!isNaN(kolorVal))
+                        	{
+                        		alert("Podaj poprawną wartość Koloru samochodu.");
+                        		valid = false;
+                        	}
+                        else if(rokVal.length != 4)
+                        	{
+                        		alert("Rok produkcji musi składac się z 4 cyfr.");
+                        		valid = false;
+                        	}
                 }
                 return valid;
             };

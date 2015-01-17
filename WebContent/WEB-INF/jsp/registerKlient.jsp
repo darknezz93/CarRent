@@ -252,12 +252,45 @@ iframe{
                         alert("Nie zostawiaj pustych pól!");
                         valid = false;
                     }
-                    else{
-                        if(isNaN(telefonVal) || isNaN(numerVal) || telefonVal.length != 9 || !isNaN(imieVal) || !isNaN(nazwiskoVal) || !isNaN(ulicaVal) || !isNaN(miastoVal)){
-                            alert("Podaj poprawne wartości");
-                    valid = false;}
-                }
-                return valid;
+                else{
+                    if(isNaN(telefonVal))
+                    {
+                        alert("Podaj poprawny numer telefonu");
+                		valid = false;
+                	}
+                    else if(telefonVal.length != 9)
+                    	{
+                    		alert("Numer telefonu musi zawierać 9 cyfr.");
+                    		valid = false;
+                    	}
+                    else if(isNaN(numerVal))
+                    	{
+                    		alert("Podaj poprawny numer domu");
+                    		valid = false;
+                    	}
+                    else if(!isNaN(imieVal))
+                    	{
+                    		alert("Podaj poprawna wartosc pola Imie");
+                    		valid = false;
+                    	}
+                    else if(!isNaN(nazwiskoVal))
+                    	{
+                    		alert("Podaj poprawna wartosc pola Nazwisko");
+                    		valid = false;
+                    	}
+                    else if(!isNaN(ulicaVal))
+                    	{
+                    		alert("Podaj poprawna wartosc pola Ulica");
+                    		valid = false;
+                    	}
+                    else if(!isNaN(miastoVal))
+                    	{
+                    		alert("Podaj poprawna wartoc pola Miasto");
+                    		valid = false;
+                    	}
+            	} 
+
+               return valid; 
             };
 
         </script>

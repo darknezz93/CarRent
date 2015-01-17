@@ -119,8 +119,26 @@ public class WypozyczeniePageController {
 	
 	@RequestMapping("/updateWypozyczenie")
 	public String updateWypozyczenie(@ModelAttribute Wypozyczenie wypozyczenie){
-		wypozyczenieService.updateData(wypozyczenie);
-		return "redirect:/getWypozyczenie";
+		
+		try
+		{
+			wypozyczenieService.updateData(wypozyczenie);
+			return "redirect:/getWypozyczenie";
+		}
+		catch (InvalidResultSetAccessException e) 
+		{
+			System.out.println("Niepoprawne dane");
+		    //throw new RuntimeException(e);
+		    return "redirect:/getWypozyczenie";
+		} 
+		catch (DataAccessException e)
+		{
+			System.out.println("Niepoprawne dane");
+		    //throw new RuntimeException(e);
+			return "redirect:/getWypozyczenie";
+		}
+		
+
 	}
 	
 	@RequestMapping("/deleteWypozyczenie")

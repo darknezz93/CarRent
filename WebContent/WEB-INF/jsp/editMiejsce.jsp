@@ -5,37 +5,16 @@
     <html>  
     <head>  
     <title>Edycja</title>  
-    <style>  
-    body {  
-     font-size: 20px;  
-     color: teal;  
-     font-family: Calibri;  
-    }  
-      
-    td {  
-     font-size: 15px;  
-     color: black;  
-     width: 100px;  
-     height: 22px;  
-     text-align: center;  
-    }  
-      
-    .heading {  
-     font-size: 18px;  
-     color: white;  
-     font: bold;  
-     background-color: green;  
-     border: thick;  
-    }
+    <style>
     
-        header{
+    header{
 	text-align:center;
 	background-color:rgba(252,252,232, 0.8);    #19A7FF
 	height: 30px;
 	padding:20px;
 	margin: 0 auto;
 	max-width:100%;
-	font-family: Orbitron;
+	font-family: Michroma;
 	margin-top:-8px;
 	margin-left:-8px;
 	margin-right: -8px;
@@ -53,7 +32,7 @@ body{
 	background-color:##19A7FF;
     transition: background-color 0.4s ease;
     display:inline; 
-    font-size:23px;
+    font-size:21px;
     padding:20px;
     margin-top:10px;
 
@@ -94,7 +73,7 @@ a{
 }
 
 fieldset{
-	font-family: Orbitron;
+	font-family: Michroma;
 	font-size: 24px;
 	width: 500px;
 	height: 50%;
@@ -134,7 +113,7 @@ textarea{
 #send_button{
 	margin-left:65%;
 	height: 30px;
-	font-family: Orbitron;
+	font-family: Michroma;
 }
 
 
@@ -233,17 +212,56 @@ iframe{
 
 #resume_content{
 	font-size: 24px;
-}  
-    </style>  
+}
+    
+    </style> 
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
+	
+	<link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
     <link rel = "stylesheet" type="text/css" href= href="<%=request.getContextPath()%>/src/main/css/style.css"/>
     
     <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script>
-	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>  
+	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script> 
+	
+	
+	
+	<script type="text/javascript">
+            function validate()
+            {
+                var ulica = document.getElementById("ulica");
+                var numer = document.getElementById("numer");
+                
+                var ulicaVal = document.getElementById("ulica").value;
+                var numerVal = document.getElementById("numer").value;
+
+
+                var valid = true;
+                if(ulica.value.length<=0 || numer.value.length<=0 )
+                    {
+                        alert("Nie zostawiaj pustych pól!");
+                        valid = false;
+                    }
+                    else{
+                        if(isNaN(numerVal))
+                        {
+                            alert("Podaj poprawne Numer.");
+                    		valid = false;
+                    	}
+                        else if(!isNaN(ulicaVal))
+                        	{
+                        		alert("Podaj poprawnie wartość pola Ulica.");
+                        		valid = false;
+                        	}
+                }
+                return valid;
+            };
+
+      </script>	 
+	
+	
 	
     </head>
     
@@ -267,17 +285,17 @@ iframe{
        
       
       <div>  
-       <form:form method="post" action="updateMiejsce" modelAttribute="miejsce">  
+       <form:form method="post" action="updateMiejsce" modelAttribute="miejsce" onsubmit="return validate()">  
         <table>  
          <tr>  
           <td>Ulica :</td>  
-          <td><form:input path="ulica"  
+          <td><form:input path="ulica" id="ulica" 
             value="${map.miejsce.ulica}" />  
           </td>  
          </tr>  
          <tr>  
           <td>Numer :</td>  
-          <td><form:input path="numer" value="${map.miejsce.numer}" />  
+          <td><form:input path="numer" value="${map.miejsce.numer}"  id="numer"/>  
           </td>  
          </tr>
          
@@ -302,7 +320,7 @@ iframe{
  
          <tr>  
           <td> </td>  
-          <td><input type="submit" value="Save" />  
+          <td><input type="submit" value="Zapisz"/>  
           </td>  
          </tr>  
         </table>  

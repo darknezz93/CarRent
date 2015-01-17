@@ -5,37 +5,16 @@
     <html>  
     <head>  
     <title>Edycja</title>  
-    <style>  
-    body {  
-     font-size: 20px;  
-     color: teal;  
-     font-family: Calibri;  
-    }  
-      
-    td {  
-     font-size: 15px;  
-     color: black;  
-     width: 100px;  
-     height: 22px;  
-     text-align: center;  
-    }  
-      
-    .heading {  
-     font-size: 18px;  
-     color: white;  
-     font: bold;  
-     background-color: green;  
-     border: thick;  
-    }
+    <style>
     
-        header{
+    header{
 	text-align:center;
 	background-color:rgba(252,252,232, 0.8);    #19A7FF
 	height: 30px;
 	padding:20px;
 	margin: 0 auto;
 	max-width:100%;
-	font-family: Orbitron;
+	font-family: Michroma;
 	margin-top:-8px;
 	margin-left:-8px;
 	margin-right: -8px;
@@ -53,7 +32,7 @@ body{
 	background-color:##19A7FF;
     transition: background-color 0.4s ease;
     display:inline; 
-    font-size:23px;
+    font-size:21px;
     padding:20px;
     margin-top:10px;
 
@@ -94,7 +73,7 @@ a{
 }
 
 fieldset{
-	font-family: Orbitron;
+	font-family: Michroma;
 	font-size: 24px;
 	width: 500px;
 	height: 50%;
@@ -134,7 +113,7 @@ textarea{
 #send_button{
 	margin-left:65%;
 	height: 30px;
-	font-family: Orbitron;
+	font-family: Michroma;
 }
 
 
@@ -233,9 +212,80 @@ iframe{
 
 #resume_content{
 	font-size: 24px;
-}  
-    </style>  
+}
+    
+    </style>
     </head>
+    
+    <link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
+    <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script>
+	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>
+	
+	<script type="text/javascript">
+            function validate()
+            {
+                var cena = document.getElementById("cena");
+                var marka = document.getElementById("marka");
+                var rok = document.getElementById("rok");
+                var kolor = document.getElementById("kolor");
+                var przebieg = document.getElementById("przebieg");
+                var silnik = document.getElementById("silnik");
+                
+                var cenaVal = document.getElementById("cena").value;
+                var markaVal = document.getElementById("marka").value;
+                var rokVal = document.getElementById("rok").value;
+                var kolorVal = document.getElementById("kolor").value;
+                var przebiegVal = document.getElementById("przebieg").value;
+                var silnikVal = document.getElementById("silnik").value;
+
+                var valid = true;
+                if(cena.value.length<=0 || marka.value.length<=0 || rok.value.length<=0 || kolor.value.length<=0 || przebieg.value.length<=0 || silnik.value.length<=0)
+                    {
+                        alert("Nie zostawiaj pustych pól!");
+                        valid = false;
+                    }
+                    else{
+                        if(isNaN(cenaVal))
+                        {
+                            alert("Wprowadź poprawnie cenę.");
+                    		valid = false;
+                        }
+                        else if(isNaN(rokVal))
+                        	{
+                        		alert("Podaj poprawną wartość Roku produkcji.")
+                        		valid = false;
+                        	}
+                        else if(isNaN(przebiegVal))
+                        	{
+                        		alert("Podaj poprawną wartość Przebiegu.");
+                        		valid = false;
+                        	}
+                        else if(isNaN(silnikVal))
+                        	{
+                        		alert("Podaj poprawną wartość Pojemności silnika.");
+                        		valid = false;
+                        	}
+                        else if(!isNaN(markaVal))
+                        	{
+                        		alert("Podaj poprawną wartość Marki samochodu.");
+                        		valid = false;
+                        	}
+                        else if(!isNaN(kolorVal))
+                        	{
+                        		alert("Podaj poprawną wartość Koloru samochodu.");
+                        		valid = false;
+                        	}
+                        else if(rokVal.length != 4)
+                        	{
+                        		alert("Rok produkcji musi składac się z 4 cyfr.");
+                        		valid = false;
+                        	}
+                }
+                return valid;
+            };
+
+        </script>
+	 
     
     <center>
     <header>
@@ -257,46 +307,46 @@ iframe{
        
       
       <div>  
-       <form:form method="post" action="updateSamochod" modelAttribute="samochod">  
+       <form:form method="post" action="updateSamochod" modelAttribute="samochod" onsubmit="return validate()">  
         <table>  
          <tr>  
           <td>Cena za dobe :</td>  
           <td><form:input path="cena_za_dobe"  
-            value="${map.Samochod.cena_za_dobe}" />  
+            value="${map.Samochod.cena_za_dobe}" id="cena" />  
           </td>  
          </tr>  
          <tr>  
           <td>Marka :</td>  
-          <td><form:input path="marka" value="${map.Samochod.marka}" />  
+          <td><form:input path="marka" value="${map.Samochod.marka}" id="marka" />  
           </td>  
          </tr>  
          <tr>  
           <td>Rok produkcji :</td>  
-          <td><form:input path="rok_produkcji" value="${map.Samochod.rok_produkcji}" />  
+          <td><form:input path="rok_produkcji" value="${map.Samochod.rok_produkcji}" id="rok" />  
           </td>  
          </tr>  
          <tr>
          <tr>  
           <td>Kolor:</td>  
-          <td><form:input path="kolor" value="${map.Samochod.kolor}" />  
+          <td><form:input path="kolor" value="${map.Samochod.kolor}" id="kolor" />  
           </td>  
          </tr>  
          <tr>
          <tr>  
           <td>Przebieg(km) :</td>  
-          <td><form:input path="przebieg" value="${map.Samochod.przebieg}" />  
+          <td><form:input path="przebieg" value="${map.Samochod.przebieg}" id="przebieg" />  
           </td>  
          </tr>  
          <tr>
          <tr>  
           <td>Pojemność silnika :</td>  
-          <td><form:input path="pojemnosc_silnika" value="${map.Samochod.pojemnosc_silnika}" />  
+          <td><form:input path="pojemnosc_silnika" value="${map.Samochod.pojemnosc_silnika}" id="silnik" />  
           </td>  
          </tr>  
  
          <tr>  
           <td> </td>  
-          <td><input type="submit" value="Save" />  
+          <td><input type="submit" value="Zapisz" />  
           </td>  
          </tr>  
         </table>  

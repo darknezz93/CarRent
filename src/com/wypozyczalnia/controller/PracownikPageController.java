@@ -84,8 +84,24 @@ public class PracownikPageController {
 	
 	@RequestMapping("/updatePracownik")
 	public String updatePracownik(@ModelAttribute Pracownik Pracownik){
-		PracownikService.updateData(Pracownik);
-		return "redirect:/getPracownik";
+		
+		try
+		{
+			PracownikService.updateData(Pracownik);
+			return "redirect:/getPracownik";
+		}
+		catch (InvalidResultSetAccessException e) 
+		{
+			System.out.println("Niepoprawne dane");
+		    //throw new RuntimeException(e);
+		    return "redirect:/getPracownik";
+		} 
+		catch (DataAccessException e)
+		{
+			System.out.println("Niepoprawne dane");
+		    //throw new RuntimeException(e);
+			return "redirect:/getPracownik";
+		}
 	}
 	
 	@RequestMapping("/deletePracownik")

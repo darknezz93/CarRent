@@ -242,9 +242,16 @@ iframe{
                         valid = false;
                     }
                     else{
-                        if(isNaN(numerVal) || !isNaN(ulicaVal)){
-                            alert("Podaj poprawne wartości");
-                    valid = false;}
+                        if(isNaN(numerVal))
+                        {
+                            alert("Podaj poprawne Numer.");
+                    		valid = false;
+                    	}
+                        else if(!isNaN(ulicaVal))
+                        	{
+                        		alert("Podaj poprawnie wartość pola Ulica.");
+                        		valid = false;
+                        	}
                 }
                 return valid;
             };

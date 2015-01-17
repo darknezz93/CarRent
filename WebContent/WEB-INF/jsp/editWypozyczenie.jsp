@@ -5,37 +5,16 @@
     <html>  
     <head>  
     <title>Edycja</title>  
-    <style>  
-    body {  
-     font-size: 20px;  
-     color: teal;  
-     font-family: Calibri;  
-    }  
-      
-    td {  
-     font-size: 15px;  
-     color: black;  
-     width: 100px;  
-     height: 22px;  
-     text-align: center;  
-    }  
-      
-    .heading {  
-     font-size: 18px;  
-     color: white;  
-     font: bold;  
-     background-color: green;  
-     border: thick;  
-    }
+    <style>
     
-        header{
+    header{
 	text-align:center;
 	background-color:rgba(252,252,232, 0.8);    #19A7FF
 	height: 30px;
 	padding:20px;
 	margin: 0 auto;
 	max-width:100%;
-	font-family: Orbitron;
+	font-family: Michroma;
 	margin-top:-8px;
 	margin-left:-8px;
 	margin-right: -8px;
@@ -53,7 +32,7 @@ body{
 	background-color:##19A7FF;
     transition: background-color 0.4s ease;
     display:inline; 
-    font-size:23px;
+    font-size:21px;
     padding:20px;
     margin-top:10px;
 
@@ -94,7 +73,7 @@ a{
 }
 
 fieldset{
-	font-family: Orbitron;
+	font-family: Michroma;
 	font-size: 24px;
 	width: 500px;
 	height: 50%;
@@ -134,7 +113,7 @@ textarea{
 #send_button{
 	margin-left:65%;
 	height: 30px;
-	font-family: Orbitron;
+	font-family: Michroma;
 }
 
 
@@ -233,8 +212,9 @@ iframe{
 
 #resume_content{
 	font-size: 24px;
-}  
-    </style>  
+}
+    
+    </style> 
     </head>
     
     <center>
@@ -247,6 +227,19 @@ iframe{
     <div id="menu"><a href = "http://localhost:8080/CarRent/registerWypozyczenie">Utwórz wypożyczenie</a></div>
 	</header>
 	</center>
+	
+	 <link href='http://fonts.googleapis.com/css?family=Michroma' rel='stylesheet' type='text/css'>
+	 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+	 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+	 <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+	 <link rel="stylesheet" href="/resources/demos/style.css">
+	 
+	 
+	  <script>
+	  $(function() {
+		$( "#data_wypozyczenia" ).datepicker({dateFormat: "yy-mm-dd"});
+	  });
+	 </script>
       
     <body>  
      <center>  
@@ -342,7 +335,7 @@ iframe{
  
          <tr>  
           <td> </td>  
-          <td><input type="submit" value="Save" />  
+          <td><input type="submit" value="Zapisz" />  
           </td>  
          </tr>  
         </table>  
