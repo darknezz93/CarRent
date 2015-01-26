@@ -8,6 +8,8 @@ import java.util.Map;
 import javax.activation.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;  
+import org.springframework.dao.DataAccessException;
+import org.springframework.jca.cci.InvalidResultSetAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;  
 import org.springframework.web.bind.annotation.ModelAttribute;  
@@ -73,9 +75,26 @@ public class KlientPageController {
 	
 	@RequestMapping("/deleteKlient")
 	public String deleteKlient(@RequestParam String id){
-		System.out.println("id = " + id);
-		klientService.deleteData(id);
-		return "redirect:/getKlient";
+		
+		try
+		{
+			System.out.println("id = " + id);
+			klientService.deleteData(id);
+			return "redirect:/getKlient";
+		}
+		catch (InvalidResultSetAccessException e) 
+		{
+			System.out.println("Klucz obcy");
+		    //throw new RuntimeException(e);
+		    return "redirect:/getKlient";
+		} 
+		catch (DataAccessException e)
+		{
+			System.out.println("Klucz obcy");
+		    //throw new RuntimeException(e);
+			return "redirect:/getKlient";
+		}
+
 	}
 
 }

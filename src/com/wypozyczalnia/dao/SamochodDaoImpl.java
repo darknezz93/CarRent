@@ -40,6 +40,7 @@ public class SamochodDaoImpl implements SamochodDao {
 	
 	@Override
 	public void deleteData(String id){
+		
 		String sql = "DELETE FROM Samochod WHERE id_samochodu = " + id;
 		JdbcTemplate jdbcTemplate = new JdbcTemplate(dataSource);
 		jdbcTemplate.update(sql);

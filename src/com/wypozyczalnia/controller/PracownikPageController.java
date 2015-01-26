@@ -106,9 +106,26 @@ public class PracownikPageController {
 	
 	@RequestMapping("/deletePracownik")
 	public String deletePracownik(@RequestParam String id){
-		System.out.println("id = " + id);
-		PracownikService.deleteData(id);
-		return "redirect:/getPracownik";
+		
+		try
+		{
+			System.out.println("id = " + id);
+			PracownikService.deleteData(id);
+			return "redirect:/getPracownik";
+		}
+		catch (InvalidResultSetAccessException e) 
+		{
+			System.out.println("Klucz obcy");
+		    //throw new RuntimeException(e);
+		    return "redirect:/getPracownik";
+		} 
+		catch (DataAccessException e)
+		{
+			System.out.println("Klucz obcy");
+		    //throw new RuntimeException(e);
+			return "redirect:/getPracownik";
+		}
+
 	}
 
 }

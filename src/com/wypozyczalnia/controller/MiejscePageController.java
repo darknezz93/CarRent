@@ -7,6 +7,8 @@ import java.util.List;
 import java.util.Map;  
 
 import org.springframework.beans.factory.annotation.Autowired;  
+import org.springframework.dao.DataAccessException;
+import org.springframework.jca.cci.InvalidResultSetAccessException;
 import org.springframework.stereotype.Controller;  
 import org.springframework.web.bind.annotation.ModelAttribute;  
 import org.springframework.web.bind.annotation.RequestMapping;  
@@ -76,9 +78,26 @@ public class MiejscePageController {
 	
 	@RequestMapping("/deleteMiejsce")
 	public String deleteMiejsce(@RequestParam String id){
-		System.out.println("id = " + id);
-		miejsceService.deleteData(id);
-		return "redirect:/getMiejsce";
+		
+		try
+		{
+			System.out.println("id = " + id);
+			miejsceService.deleteData(id);
+			return "redirect:/getMiejsce";
+		}
+		catch (InvalidResultSetAccessException e) 
+		{
+			System.out.println("Klucz obcy");
+		    //throw new RuntimeException(e);
+		    return "redirect:/getMiejsce";
+		} 
+		catch (DataAccessException e)
+		{
+			System.out.println("Klucz obcy");
+		    //throw new RuntimeException(e);
+			return "redirect:/getMiejsce";
+		}
+
 	}
 
 }
