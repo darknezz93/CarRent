@@ -256,6 +256,13 @@ iframe{
 
 #resume_content{
 	font-size: 24px;
+}
+
+input {
+  border:solid 1px #ccc;
+  border-radius: 5px;
+  padding:7px 14px;
+  margin-bottom:10px
 }  
     </style>
     
@@ -266,7 +273,8 @@ iframe{
     <link rel = "stylesheet" type="text/css" href= href="<%=request.getContextPath()%>/src/main/css/style.css"/>
     
     <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script>
-	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>  
+	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script> 
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     </head> 
     
     <center>
@@ -278,16 +286,17 @@ iframe{
     <div id="menu"><a href = "http://localhost:8080/CarRent/getWypozyczenie">Wypożyczenia</a></div>
     <div id="menu"><a href = "http://localhost:8080/CarRent/registerWypozyczenie">Utwórz wypożyczenie</a></div>
 	</header>
-	</center>
-    
+	</center> 
      
     <body>  
      <center>  
              
-     <b>Klienci</b>  
+     <b>Klienci<br></b>  
+   
+   <div id="users">
+     <input id="search" placeholder="Nazwisko.." />
        
-      
-      <table border="1">  
+      <table border="1"> 
        <tr>  
         <td class="heading">Klient Id</td>  
         <td class="heading">Imie</td>  
@@ -298,12 +307,13 @@ iframe{
         <td class="heading">Miasto</td> 
         <td class="heading_1">Edytuj</td>  
         <td class="heading_1">Usun</td>    
-       </tr>  
-       <c:forEach var="klient" items="${klientList}">  
+       </tr>
+         
+       <c:forEach var="klient" items="${klientList}">
         <tr>  
          <td>${klient.id_klienta}</td>  
          <td>${klient.imie}</td>  
-         <td>${klient.nazwisko}</td>  
+         <td id="nazwisko">${klient.nazwisko}</td>  
          <td>${klient.telefon}</td>  
          <td>${klient.ulica}</td>
          <td>${klient.numer}</td>
@@ -311,10 +321,24 @@ iframe{
          <td><a href="editKlient?id=${klient.id_klienta}">Edytuj</a></td>  
          <td><a href="deleteKlient?id=${klient.id_klienta}">Usun</a></td>  
         </tr>  
-       </c:forEach>  
+      </c:forEach>
        <tr class="heading_2"><td colspan="10"><a href="registerKlient">Dodaj nowego klienta</a></td></tr>  
-      </table>  
+      </table>
+      </div>  
       
      </center>  
     </body>  
-    </html>  
+    </html>
+    
+    <script>
+    $("#search").keyup(function() {
+        var value = this.value;
+
+        $("table").find("tr").each(function(index) {
+            if (!index) return;
+            var id = $(this).find("#nazwisko").first().text();
+            $(this).toggle(id.indexOf(value) !== -1);
+        });
+    });
+    </script>  
+    

@@ -256,6 +256,13 @@ iframe{
 
 #resume_content{
 	font-size: 24px;
+}
+
+input {
+  border:solid 1px #ccc;
+  border-radius: 5px;
+  padding:7px 14px;
+  margin-bottom:10px
 }  
     </style>
     
@@ -265,6 +272,7 @@ iframe{
     <link href='http://fonts.googleapis.com/css?family=Patrick+Hand+SC' rel='stylesheet' type='text/css'>
     <link rel = "stylesheet" type="text/css" href= href="<%=request.getContextPath()%>/src/main/css/style.css"/>
     
+    <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script> 
     <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script>
 	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>  
     </head> 
@@ -284,9 +292,9 @@ iframe{
     <body>  
      <center>  
              
-     <b>Lokalizacje</b>  
+     <b>Lokalizacje<br></b>  
        
-      
+      <input id="search" placeholder="Miasto..." />
       <table border="1">  
        <tr>  
         <td class="heading">Miejsce Id</td>  
@@ -301,7 +309,7 @@ iframe{
          <td>${miejsce.id_miejsca}</td>  
          <td>${miejsce.ulica}</td>  
          <td>${miejsce.numer}</td>  
-         <td>${miejsce.miasto}</td>  
+         <td id="miasto">${miejsce.miasto}</td>  
          <td><a href="editMiejsce?id=${miejsce.id_miejsca}">Edytuj</a></td>  
          <td><a href="deleteMiejsce?id=${miejsce.id_miejsca}">Usun</a></td>  
         </tr>  
@@ -312,3 +320,15 @@ iframe{
      </center>  
     </body>  
     </html>  
+    
+   <script>
+    $("#search").keyup(function() {
+        var value = this.value;
+
+        $("table").find("tr").each(function(index) {
+            if (!index) return;
+            var id = $(this).find("#miasto").first().text();
+            $(this).toggle(id.indexOf(value) !== -1);
+        });
+    });
+    </script>  

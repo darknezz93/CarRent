@@ -248,7 +248,14 @@ iframe{
 
 #resume_content{
 	font-size: 24px;
-}  
+}
+
+input {
+  border:solid 1px #ccc;
+  border-radius: 5px;
+  padding:7px 14px;
+  margin-bottom:10px
+}   
     </style>
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -258,7 +265,8 @@ iframe{
     <link rel = "stylesheet" type="text/css" href= href="<%=request.getContextPath()%>/src/main/css/style.css"/>
     
     <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script>
-	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>  
+	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>
+	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>  
     </head> 
     
     <center>
@@ -276,9 +284,9 @@ iframe{
     <body>  
      <center>  
              
-     <b>Samochody</b>  
+     <b>Samochody<br></b>  
        
-      
+      <input id="search" placeholder="Marka..." />
       <table border="1">  
        <tr>  
         <td class="heading">Samochod Id</td>  
@@ -295,7 +303,7 @@ iframe{
         <tr>  
          <td>${samochod.id_samochodu}</td>  
          <td>${samochod.cena_za_dobe}</td>  
-         <td>${samochod.marka}</td>  
+         <td id="marka">${samochod.marka}</td>  
          <td>${samochod.rok_produkcji}</td>  
          <td>${samochod.kolor}</td>
          <td>${samochod.przebieg}</td>
@@ -320,4 +328,16 @@ iframe{
       
      </center>  
     </body>  
-    </html>  
+    </html>
+    
+   <script>
+    $("#search").keyup(function() {
+        var value = this.value;
+
+        $("table").find("tr").each(function(index) {
+            if (!index) return;
+            var id = $(this).find("#marka").first().text();
+            $(this).toggle(id.indexOf(value) !== -1);
+        });
+    });
+    </script>   

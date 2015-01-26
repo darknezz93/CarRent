@@ -256,7 +256,14 @@ iframe{
 
 #resume_content{
 	font-size: 24px;
-}  
+}
+
+input {
+  border:solid 1px #ccc;
+  border-radius: 5px;
+  padding:7px 14px;
+  margin-bottom:10px
+}   
     </style>
     
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -267,6 +274,7 @@ iframe{
     
     <script type = "text/javascript"  src = "CarRent/js/jquery.js"></script>
 	<script type = "text/javascript"  src = "CarRent/js/moja_strona.js"></script>  
+	<script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
     </head> 
     
     <center>
@@ -284,9 +292,9 @@ iframe{
     <body>  
      <center>  
              
-     <b>Wypożyczenia</b>  
+     <b>Wypożyczenia<br></b>  
        
-      
+      <input id="search" placeholder="Id wypozyczenia..." />
       <table border="1">  
        <tr>  
         <td class="heading">Wypozyczenie Id</td>  
@@ -302,7 +310,7 @@ iframe{
        </tr>  
        <c:forEach var="wypozyczenie" items="${wypozyczenieList}">  
         <tr>  
-         <td>${wypozyczenie.id_wypozyczenia}</td>  
+         <td id="id">${wypozyczenie.id_wypozyczenia}</td>  
          <td>${wypozyczenie.data_wypozyczenia}</td>  
          <td>${wypozyczenie.imie_klienta}</td>
          <td>${wypozyczenie.nazwisko_klienta}</td>
@@ -319,4 +327,16 @@ iframe{
       
      </center>  
     </body>  
-    </html>  
+    </html>
+    
+   <script>
+    $("#search").keyup(function() {
+        var value = this.value;
+
+        $("table").find("tr").each(function(index) {
+            if (!index) return;
+            var id = $(this).find("#id").first().text();
+            $(this).toggle(id.indexOf(value) !== -1);
+        });
+    });
+    </script>   

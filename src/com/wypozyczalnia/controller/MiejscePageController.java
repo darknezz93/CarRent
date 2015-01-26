@@ -57,10 +57,10 @@ public class MiejscePageController {
 		miejsce = miejsceService.getMiejsce(id);
 		
 		List<String>cityList =  new ArrayList<String>();
-		cityList.add("Poznañ");
+		cityList.add("Poznan");
 		cityList.add("Warszawa");
-		cityList.add("Wroc³aw");
-		cityList.add("Gdañsk");
+		cityList.add("Wroclaw");
+		cityList.add("Gdansk");
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("cityList", cityList);
